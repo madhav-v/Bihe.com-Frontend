@@ -38,7 +38,7 @@ const Header = () => {
             </li>
             <li className="navbar-item mt-2">
               <NavLink className="navbar-link cool-link" to="/">
-                About Our Life Partner
+                About Bihe.com
               </NavLink>
             </li>
             <li className="navbar-item mt-2">
