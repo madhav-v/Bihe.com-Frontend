@@ -26,10 +26,10 @@ const Header = () => {
           <img src={logo} alt="logo" />
         </NavLink>
         <div className="Navbar-items">
-          <ul className="flex gap-6 justify-end w-full">
+          <ul className="flex gap-3 md:gap-6 justify-end w-full">
             <li className="navbar-item mt-2">
               <NavLink
-                className="navbar-link cool-link"
+                className="navbar-link cool-link text-sm md:text-base"
                 aria-current="page"
                 to="/"
               >
@@ -37,46 +37,44 @@ const Header = () => {
               </NavLink>
             </li>
             <li className="navbar-item mt-2">
-              <NavLink className="navbar-link cool-link" to="/">
+              <NavLink
+                className="navbar-link cool-link text-sm md:text-base"
+                to="/"
+              >
                 About Bihe.com
               </NavLink>
             </li>
             <li className="navbar-item mt-2">
-              <NavLink className="navbar-link cool-link" to="/">
+              <NavLink
+                className="navbar-link cool-link text-sm md:text-base"
+                to="/"
+              >
                 Help?
               </NavLink>
             </li>
           </ul>
 
           {!loggedInUser ? (
-            // <li className="navbar-item">
             <Link to="/login">
-              {" "}
-              <button className="nav-btn text-white">Login</button>
+              <button className="nav-btn text-sm md:text-base text-white">
+                Login
+              </button>
             </Link>
           ) : (
-            // </li>
-            // <li className="navbar-item">
-            <Link>
-              {" "}
-              <button
-                className="nav-btn text-white"
-                // onClick={(e) => handleLogout(e)}
-              >
+            <Link to="/">
+              <button className="nav-btn text-sm md:text-base text-white">
                 Logout
               </button>
             </Link>
-            // </li>
           )}
         </div>
-        <div className="sidenavbar">
-          {/* <VscThreeBars onClick={sidenavs} className="navbar-toggle" /> */}
+        <div className="sidenavbar lg:hidden">
           <div ref={sidenav} className="sidenav">
             <div className="snbar"></div>
             <ul className="sidenavbar-items">
               <li className="sidenavbar-item">
                 <NavLink
-                  className="navbar-link cool-link "
+                  className="navbar-link cool-link text-sm md:text-base"
                   aria-current="page"
                   to="/"
                 >
@@ -84,12 +82,18 @@ const Header = () => {
                 </NavLink>
               </li>
               <li className="sidenavbar-item">
-                <NavLink className="navbar-link cool-link" to="/about">
+                <NavLink
+                  className="navbar-link cool-link text-sm md:text-base"
+                  to="/about"
+                >
                   About Our Life Partner
                 </NavLink>
               </li>
               <li className="sidenavbar-item">
-                <NavLink className="navbar-link cool-link" to="/help">
+                <NavLink
+                  className="navbar-link cool-link text-sm md:text-base"
+                  to="/help"
+                >
                   Help?
                 </NavLink>
               </li>
@@ -99,18 +103,15 @@ const Header = () => {
               {!loggedInUser ? (
                 <span className="sidenavbar-item ">
                   <Link to="/signup">
-                    {" "}
-                    <button className="sidenav-btn">Register Now</button>
+                    <button className="sidenav-btn text-sm md:text-base">
+                      Register Now
+                    </button>
                   </Link>
                 </span>
               ) : (
                 <span className="sidenavbar-item ">
-                  <Link>
-                    {" "}
-                    <button
-                      className="sidenav-btn"
-                      //   onClick={(e) => handleLogout(e)}
-                    >
+                  <Link to="/">
+                    <button className="sidenav-btn text-sm md:text-base">
                       Logout
                     </button>
                   </Link>
