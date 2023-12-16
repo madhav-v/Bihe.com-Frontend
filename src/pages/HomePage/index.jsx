@@ -1,9 +1,14 @@
 import { NavLink } from "react-router-dom";
 import background from "/background.jpg";
+import First from "./Component/First";
+import Second from "./Component/Second";
+import Header from "../Header and Footer/header";
+import Layout from "./Layout";
+import Herosection from "./Component/HeroSection";
 const HomePage = () => {
   return (
     <>
-      <div
+      {/* <div
         className="bg-cover bg-center bg-no-repeat min-h-screen relative"
         style={{ backgroundImage: `url(${background})` }}
       >
@@ -25,7 +30,12 @@ const HomePage = () => {
             </NavLink>
           </div>
         </div>
-      </div>
+      </div> */}
+      <Layout>
+        <Herosection />
+        <First />
+        <Second />
+      </Layout>
     </>
   );
 };
