@@ -61,7 +61,7 @@ const NavBar = () => {
               </NavLink>
             </li>
             <li className="navbar-item mt-2 hover:bg-screen py-2 px-3 rounded-xl hover:bg-[#e86f73]">
-              <NavLink className="navbar-link cool-link" to="/user">
+              <NavLink className="navbar-link cool-link" to="/connection">
                 <BsPersonAdd size={30} color="white" />
               </NavLink>
             </li>
@@ -72,7 +72,7 @@ const NavBar = () => {
             </li>
 
             <li className="navbar-item mt-2 hover:bg-screen py-2 px-3 rounded-xl hover:bg-[#e86f6f]">
-              <NavLink className="navbar-link cool-link" to="/user">
+              <NavLink className="navbar-link cool-link" to="/notification">
                 <MdNotificationsNone size={30} color="white" />
               </NavLink>
             </li>

@@ -20,12 +20,17 @@ import {
 } from "./reducers/user.reducer";
 import FormEdit from "./pages/UserForm/edit";
 import ChatProvider from "./Context/chatProvider.jsx";
-import ChatPage from "./pages/chat/index.jsx";
 import FourthForm from "./pages/UserForm/fourthform.jsx";
 import FirstForm from "./pages/UserForm/firstform.jsx";
 import ViewProfile from "./pages/Profle/ViewProfile.jsx";
 import Chat from "./components/Chat/index.jsx";
 import EditProfile from "./pages/Profle/EditProfile/EditProfile.jsx";
+import ChatPanel from "./components/Chat/comp/ChatPanel.jsx";
+import ChatLayout from "./components/Chat/Layout/index.jsx";
+import ConnectionLayout from "./pages/Connections/index.jsx";
+import NotificationSection from "./pages/Notifications/index.jsx";
+import Dashboard from "./pages/Dashboard/dashboard.jsx";
+import DashboardSection from "./pages/Dashboard/dashboardsection.jsx";
 // import ChatPanel from "./pages/chat/index.jsx";
 
 function App() {
@@ -46,8 +51,19 @@ function App() {
           <Route path="/forgetPassword" element={<ResetPassword />} />
           <Route path="/setPassword/:token" element={<SetPassword />} />
           <Route path="/terms" element={<TermsAndConditions />} />
-          <Route path="/chat" element={<Chat />} />
-          <Route
+          <Route path="/chat" element={<ChatLayout />}>
+            <Route path="conversation" element={<ChatPanel />}>
+              <Route path=":id" element={<ChatPanel />} />
+            </Route>
+          </Route>
+          <Route path="/connection" element={<ConnectionLayout />} />
+          <Route path="/notification" element={<NotificationSection />} />
+          <Route path="/user" element={<Dashboard />}>
+            <Route path="" element={<DashboardSection />} />
+            {/* <Route path="search" element={<SearchResultSection />} /> */}
+            {/* <Route path="profile" element={<UserProfileSection />} /> */}
+          </Route>
+          {/* <Route
             path="/user"
             element={
               <CheckPermission
@@ -55,7 +71,7 @@ function App() {
                 Component={<UserDashboard />}
               />
             }
-          />
+          /> */}
           <Route
             path="/profile/info"
             element={<CheckPermission accessBy={"user"} Component={<Form />} />}
