@@ -63,15 +63,7 @@ function App() {
             {/* <Route path="search" element={<SearchResultSection />} /> */}
             {/* <Route path="profile" element={<UserProfileSection />} /> */}
           </Route>
-          {/* <Route
-            path="/user"
-            element={
-              <CheckPermission
-                accessBy={"user"}
-                Component={<UserDashboard />}
-              />
-            }
-          /> */}
+
           <Route
             path="/profile/info"
             element={<CheckPermission accessBy={"user"} Component={<Form />} />}

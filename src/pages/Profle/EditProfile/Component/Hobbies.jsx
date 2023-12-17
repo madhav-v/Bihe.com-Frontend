@@ -112,8 +112,8 @@ const Hobbies = () => {
                           <Input
                             {...field}
                             label="Hobbies"
-                            classes3="w-[40%]"
-                            classes="px-2"
+                            classes3="w-[100%]"
+                            classes="p-2"
                             classes2="block lg:text-lg xl:text-xl"
                             type="text"
                             placeholder="Enter your hobbies, separated by commas"

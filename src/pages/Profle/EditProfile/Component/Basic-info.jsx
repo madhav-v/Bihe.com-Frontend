@@ -179,7 +179,7 @@ const BasicInfo = () => {
             {detail ? (
               <>
                 {" "}
-                <div className="mt-5 min-h-full mb-8 px-2 py-4 border w-[910%] md:w-[80%] lg:w-[70%] xl:w-[65%] bg-white rounded-lg mx-auto">
+                <div className="mt-5 min-h-full mb-8 px-2 py-4 border w-[910%] md:w-[80%] lg:w-[70%] xl:w-[100%] bg-white rounded-lg mx-auto">
                   <form onSubmit={handleSubmit(handleSav)}>
                     <div className="w-full flex  justify-around items-center">
                       <Controller

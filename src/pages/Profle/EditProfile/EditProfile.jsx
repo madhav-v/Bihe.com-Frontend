@@ -13,7 +13,7 @@ const EditProfile = () => {
       <NavBar />
       <Photo />
       <Bio />
-      <PartnerMessage />
+      {/* <PartnerMessage /> */}
       <BasicInfo />
       <ReligiousInfo />
       <EducationalInfo />

@@ -138,12 +138,6 @@ const ReligiousInfo = () => {
                   <p>Employed In: {loggedInUser.profile.employedIn}</p>
                   <p>Occupation: {loggedInUser.profile.occupation}</p>
                   <p>Income: {loggedInUser.profile.income}</p>
-                  <p>
-                    Number of Family Members:{" "}
-                    {loggedInUser.profile.noOfFamilyMembers}
-                  </p>
-                  <p>Number of Siblings: {loggedInUser.profile.noOfSiblings}</p>
-                  <p>Live With Family: {loggedInUser.profile.liveWithFamily}</p>
                 </>
               ) : (
                 <>Loading</>
@@ -152,7 +146,8 @@ const ReligiousInfo = () => {
           </>
         ) : (
           <>
-            <div className="mt-5 min-h-full mb-8 px-2 py-4 border w-[910%] md:w-[80%] lg:w-[70%] xl:w-[65%] bg-white rounded-lg mx-auto">
+            <div className="mt-5 min-h-full mb-8 px-2 py-4 border w-[90%] md:w-[80%] lg:w-[70%] xl:w-[100%] bg-white rounded-lg mx-auto">
+              {" "}
               <form onSubmit={handleSubmit(handleSav)}>
                 <div className="w-full flex justify-around items-center">
                   <Controller
@@ -291,55 +286,6 @@ const ReligiousInfo = () => {
                         setValue={setValue}
                         error={errors.occupation?.message}
                         options={occupationOptions}
-                      />
-                    )}
-                  />
-                </div>
-                <div className="w-full flex justify-around items-center">
-                  <Controller
-                    name="noOfFamilyMembers"
-                    control={control}
-                    render={({ field }) => (
-                      <Input
-                        {...field}
-                        label="Number of Family Members"
-                        classes3="w-[40%]"
-                        classes="px-2"
-                        classes2="block text-md lg:text-lg xl:text-xl"
-                        type="number"
-                        placeholder="Enter number of your family members"
-                      />
-                    )}
-                  />
-                  <Controller
-                    name="noOfSiblings"
-                    control={control}
-                    render={({ field }) => (
-                      <Input
-                        {...field}
-                        label="Number of Siblings"
-                        classes3="w-[40%]"
-                        classes="px-2"
-                        classes2="block text-md lg:text-lg xl:text-xl"
-                        type="number"
-                        placeholder="Enter number of siblings"
-                      />
-                    )}
-                  />
-                </div>
-                <div className="w-full flex justify-around items-center">
-                  <Controller
-                    name="liveWithFamily"
-                    control={control}
-                    render={({ field }) => (
-                      <InputSelect
-                        {...field}
-                        label="Do you live with family?"
-                        classes1="block text-md lg:text-lg xl:text-xl my-2"
-                        classes2="xl:w-[40%] basis-[40%]"
-                        setValue={setValue}
-                        error={errors.liveWithFamily?.message}
-                        options={liveWithFamilyOptions}
                       />
                     )}
                   />

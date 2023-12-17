@@ -36,7 +36,7 @@ const SideNavBar = () => {
   }, []);
   return (
     <>
-      <div className="mt-4 flex flex-col h-full bg-white shadow-lg p-4 rounded-lg">
+      <div className="mt-2 flex flex-col h-full bg-white shadow-lg p-4 rounded-lg">
         {user ? (
           <>
             <div className="">
@@ -50,7 +50,7 @@ const SideNavBar = () => {
                 className="rounded-3xl p-2 w-[350px]"
               />
             </div>
-            <div className="mt-4 capitalize text-center">
+            <div className="mt-2 capitalize text-center">
               <h2 className="text-black text-3xl font-bold mb-4">
                 Your Details
               </h2>
@@ -69,7 +69,7 @@ const SideNavBar = () => {
                 {user?.address}, <span>Nepal</span>
               </p>
             </div>
-            <div className="flex flex-col p-2 mt-4 text-center">
+            <div className="flex flex-col p-2 mt-1 text-center">
               <Link
                 to="/profile"
                 className="text-blue-500 text-lg hover:underline"
