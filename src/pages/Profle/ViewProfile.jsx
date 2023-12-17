@@ -116,7 +116,7 @@ const ViewProfile = () => {
                   <p className="text-md font-bold text-gray-600 mb-2">
                     Hobbies:{" "}
                     <span className="text-base font-normal float-right">
-                      {detail.hobbies}
+                      {detail.hobbies ? detail.hobbies : "N/A"}
                     </span>
                   </p>
                   <p className="text-md font-bold text-gray-600 mb-2">
@@ -153,6 +153,18 @@ const ViewProfile = () => {
                     Gotra:{" "}
                     <span className="text-base font-normal float-right">
                       {detail.gotra ? detail.gotra : "N/A"}
+                    </span>
+                  </p>
+                  <p className="text-md font-bold text-gray-600 mb-2">
+                    Family Type:{" "}
+                    <span className="text-base font-normal float-right">
+                      {detail.familyType}
+                    </span>
+                  </p>
+                  <p className="text-md font-bold text-gray-600 mb-2">
+                    Family Values:{" "}
+                    <span className="text-base font-normal float-right">
+                      {detail.familyValues}
                     </span>
                   </p>
                   <p className="text-md font-bold text-gray-600 mb-2">

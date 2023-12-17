@@ -151,48 +151,75 @@ const EducationalInfo = () => {
 
   return (
     <>
-      <div className="capitalize bg-slate-300 p-5 mb-5 max-w-2xl mx-auto flex justify-between rounded-md shadow-md">
+      <div className="capitalize border p-4  mb-4p-5 mb-5 max-w-2xl mx-auto flex justify-between rounded-md">
         {!editMode ? (
           <>
-            <div className="capitalize bg-slate-300 p-5 mb-5 max-w-2xl mx-auto">
+            <div className="w-[100%] capitalize  p-4 rounded-md shadow-md mb-4p-5 mb-5 max-w-2xl mx-auto">
               <h3 className="text-lg font-bold mb-3">
                 Preferrence Information
               </h3>
               {loggedInUser ? (
                 <>
                   {" "}
-                  <p>
+                  <p className="text-md font-bold text-gray-600 mb-2">
                     Preferred Religion:{" "}
-                    {loggedInUser?.profile?.preferredReligion}
+                    <span className="text-base font-normal float-right">
+                      {loggedInUser?.profile?.preferredReligion}
+                    </span>
                   </p>
-                  {/* <p>Age: {calculateAge(loggedInUser.profile.dateOfBirth)}</p> */}
-                  <p>
+                  <p className="text-md font-bold text-gray-600 mb-2">
                     Preferred Marital Status:{" "}
-                    {loggedInUser.profile.preferredMaritalStatus}
+                    <span className="text-base font-normal float-right">
+                      {loggedInUser.profile.preferredMaritalStatus}
+                    </span>
                   </p>
-                  <p>Preferred Age: {loggedInUser.profile.preferredAge}</p>
-                  <p>
-                    Preferred Height: {loggedInUser.profile.preferredHeight}
+                  <p className="text-md font-bold text-gray-600 mb-2">
+                    Preferred Age:{" "}
+                    <span className="text-base font-normal float-right">
+                      {loggedInUser.profile.preferredAge}
+                    </span>
                   </p>
-                  <p>Preferred Caste: {loggedInUser.profile.preferredCaste}</p>
-                  <p>
+                  <p className="text-md font-bold text-gray-600 mb-2">
+                    Preferred Height:{" "}
+                    <span className="text-base font-normal float-right">
+                      {loggedInUser.profile.preferredHeight}
+                    </span>
+                  </p>
+                  <p className="text-md font-bold text-gray-600 mb-2">
+                    Preferred Caste:{" "}
+                    <span className="text-base font-normal float-right">
+                      {loggedInUser.profile.preferredCaste}
+                    </span>
+                  </p>
+                  <p className="text-md font-bold text-gray-600 mb-2">
                     Preferred Mother Tongue:{" "}
-                    {loggedInUser.profile.preferredMotherTongue}
+                    <span className="text-base font-normal float-right">
+                      {loggedInUser.profile.preferredMotherTongue}
+                    </span>
                   </p>
-                  <p>
+                  {/* <p className="text-md font-bold text-gray-600 mb-2">
                     Preferred Family Values:{" "}
-                    {loggedInUser.profile.preferredFamilyValues}
-                  </p>
-                  <p>
+                    <span className="text-base font-normal float-right">
+                      {loggedInUser.profile.preferredFamilyValues}
+                    </span>
+                  </p> */}
+                  <p className="text-md font-bold text-gray-600 mb-2">
                     Preferred Education:{" "}
-                    {loggedInUser.profile.preferredEducation}
+                    <span className="text-base font-normal float-right">
+                      {loggedInUser.profile.preferredEducation}
+                    </span>
                   </p>
-                  <p>
+                  <p className="text-md font-bold text-gray-600 mb-2">
                     Preferred Occupation:{" "}
-                    {loggedInUser.profile.preferredOccupation}
+                    <span className="text-base font-normal float-right">
+                      {loggedInUser.profile.preferredOccupation}
+                    </span>
                   </p>
-                  <p>
-                    Preferred Income: {loggedInUser.profile.preferredIncome}
+                  <p className="text-md font-bold text-gray-600 mb-2">
+                    Preferred Income:{" "}
+                    <span className="text-base font-normal float-right">
+                      {loggedInUser.profile.preferredIncome}
+                    </span>
                   </p>
                 </>
               ) : (

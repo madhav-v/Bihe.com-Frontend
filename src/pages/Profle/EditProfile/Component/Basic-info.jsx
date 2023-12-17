@@ -8,6 +8,19 @@ import { useForm, Controller } from "react-hook-form";
 import profileSvc from "../../../../services/profile.service";
 import { setLoggedInUser } from "../../../../reducers/user.reducer";
 
+const calculateAge = (dateOfBirth) => {
+  const birthDate = new Date(dateOfBirth);
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+  if (
+    monthDiff < 0 ||
+    (monthDiff === 0 && today.getDate() < birthDate.getDate())
+  ) {
+    age--;
+  }
+  return age;
+};
 const BasicInfo = () => {
   const dispatch = useDispatch();
   const loggedInUser = useSelector((state) => state.User.loggedInUser);
@@ -147,26 +160,72 @@ const BasicInfo = () => {
 
   return (
     <>
-      <div className="capitalize bg-slate-300 p-5 mb-5 max-w-2xl mx-auto flex justify-between rounded-md shadow-md">
+      <div className="capitalize border p-5 mb-5 max-w-2xl mx-auto flex justify-between rounded-md shadow-md">
         {!editMode ? (
           <>
-            <div className="capitalize bg-slate-300 p-5 mb-5 max-w-2xl mx-auto">
+            <div className="w-[100%] capitalize border rounded-md shadow-md p-5 mb-5 max-w-2xl mx-auto">
               <h3 className="text-lg font-bold mb-3">Basic Details</h3>
               {loggedInUser ? (
                 <>
-                  {" "}
-                  <p>Name: {loggedInUser?.profile?.fullname}</p>
-                  <p>Sex: {loggedInUser?.profile?.sex}</p>
-                  {/* <p>Age: {calculateAge(loggedInUser.profile.dateOfBirth)}</p> */}
-                  {/* <p>Height: {loggedInUser.profile.height}</p>   */}
-                  <p>Marital Status: {loggedInUser?.profile?.marital_status}</p>
-                  <p>Mother Tongue: {loggedInUser?.profile?.motherTongue}</p>
-                  <p>Religion: {loggedInUser?.profile?.religion}</p>
-                  <p>Caste: {loggedInUser?.profile?.caste}</p>
-                  <p>Address: {loggedInUser?.profile?.address}</p>
-                  <p>
+                  <p className="text-md font-bold text-gray-600 mb-2">
+                    Name:{" "}
+                    <span className="text-base font-normal float-right">
+                      {loggedInUser?.profile?.fullname}
+                    </span>
+                  </p>
+                  <p className="text-md font-bold text-gray-600 mb-2">
+                    Sex:{" "}
+                    <span className="text-base font-normal float-right">
+                      {loggedInUser?.profile?.sex}
+                    </span>
+                  </p>
+                  <p className="text-md font-bold text-gray-600 mb-2">
+                    Age:{" "}
+                    <span className="text-base font-normal float-right">
+                      {calculateAge(loggedInUser.profile.dateOfBirth)}
+                    </span>
+                  </p>
+                  <p className="text-md font-bold text-gray-600 mb-2">
+                    Height:{" "}
+                    <span className="text-base font-normal float-right">
+                      {loggedInUser?.profile?.height}
+                    </span>
+                  </p>
+                  <p className="text-md font-bold text-gray-600 mb-2">
+                    Marital Status:{" "}
+                    <span className="text-base font-normal float-right">
+                      {loggedInUser?.profile?.marital_status}
+                    </span>
+                  </p>
+                  <p className="text-md font-bold text-gray-600 mb-2">
+                    Mother Tongue:{" "}
+                    <span className="text-base font-normal float-right">
+                      {loggedInUser?.profile?.motherTongue}
+                    </span>
+                  </p>
+                  <p className="text-md font-bold text-gray-600 mb-2">
+                    Religion:{" "}
+                    <span className="text-base font-normal float-right">
+                      {loggedInUser?.profile?.religion}
+                    </span>
+                  </p>
+                  <p className="text-md font-bold text-gray-600 mb-2">
+                    Caste:{" "}
+                    <span className="text-base font-normal float-right">
+                      {loggedInUser?.profile?.caste}
+                    </span>
+                  </p>
+                  <p className="text-md font-bold text-gray-600 mb-2">
+                    Address:{" "}
+                    <span className="text-base font-normal float-right">
+                      {loggedInUser?.profile?.address}
+                    </span>
+                  </p>
+                  <p className="text-md font-bold text-gray-600 mb-2">
                     Smoking or Drinking Habits:{" "}
-                    {loggedInUser?.profile?.smokeOrDrink}
+                    <span className="text-base font-normal float-right">
+                      {loggedInUser?.profile?.smokeOrDrink}
+                    </span>
                   </p>
                 </>
               ) : (

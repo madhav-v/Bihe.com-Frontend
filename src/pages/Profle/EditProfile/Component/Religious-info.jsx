@@ -116,28 +116,62 @@ const ReligiousInfo = () => {
 
   return (
     <>
-      <div className="capitalize bg-slate-300 p-5 mb-5 max-w-2xl mx-auto flex justify-between rounded-md shadow-md">
+      <div className="capitalize border  p-5 mb-5 max-w-2xl mx-auto flex justify-between rounded-md shadow-md">
         {!editMode ? (
           <>
-            <div className="capitalize bg-slate-300 p-5 mb-5 max-w-2xl mx-auto">
+            <div className="w-[100%] capitalize border  rounded-md shadow-md p-5 mb-5 max-w-2xl mx-auto">
               <h3 className="text-lg font-bold mb-3">Personal Information</h3>
               {loggedInUser ? (
                 <>
-                  {" "}
-                  <p>Family Type: {loggedInUser?.profile?.familyType}</p>
+                  <p className="text-md font-bold text-gray-600 mb-2">
+                    Family Type:{" "}
+                    <span className="text-base font-normal float-right">
+                      {loggedInUser?.profile?.familyType}
+                    </span>
+                  </p>
                   {/* <p>Age: {calculateAge(loggedInUser.profile.dateOfBirth)}</p> */}
-                  <p>Family Values: {loggedInUser.profile.familyValues}</p>
-                  <p>Gotra: {loggedInUser.profile.gotra}</p>
-                  <p>
+                  <p className="text-md font-bold text-gray-600 mb-2">
+                    Family Values:{" "}
+                    <span className="text-base font-normal float-right">
+                      {loggedInUser.profile.familyValues}
+                    </span>
+                  </p>
+                  <p className="text-md font-bold text-gray-600 mb-2">
+                    Gotra:{" "}
+                    <span className="text-base font-normal float-right">
+                      {loggedInUser.profile.gotra}
+                    </span>
+                  </p>
+                  <p className="text-md font-bold text-gray-600 mb-2">
                     Physical Disability:{" "}
-                    {loggedInUser.profile.physicalDisability}
+                    <span className="text-base font-normal float-right">
+                      {loggedInUser.profile.physicalDisability}
+                    </span>
                   </p>
-                  <p>
-                    Highest Education: {loggedInUser.profile.highestEducation}
+                  <p className="text-md font-bold text-gray-600 mb-2">
+                    Highest Education:{" "}
+                    <span className="text-base font-normal float-right">
+                      {loggedInUser.profile.highestEducation}
+                    </span>
                   </p>
-                  <p>Employed In: {loggedInUser.profile.employedIn}</p>
-                  <p>Occupation: {loggedInUser.profile.occupation}</p>
-                  <p>Income: {loggedInUser.profile.income}</p>
+                  <p className="text-md font-bold text-gray-600 mb-2">
+                    Employed In:{" "}
+                    <span className="text-base font-normal float-right">
+                      {loggedInUser.profile.employedIn}
+                    </span>
+                  </p>
+                  <p className="text-md font-bold text-gray-600 mb-2">
+                    Occupation:{" "}
+                    <span className="text-base font-normal float-right">
+                      {loggedInUser.profile.occupation}
+                    </span>
+                  </p>
+                  <p className="text-md font-bold text-gray-600 mb-2">
+                    Income:{" "}
+                    <span className="text-base font-normal float-right">
+                      {loggedInUser.profile.income}
+                    </span>
+                  </p>
                 </>
               ) : (
                 <>Loading</>

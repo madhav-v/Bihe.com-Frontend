@@ -75,10 +75,10 @@ const Hobbies = () => {
 
   return (
     <>
-      <div className="capitalize bg-slate-300 p-5 mb-5 max-w-2xl mx-auto flex justify-between rounded-md shadow-md">
+      <div className="capitalize border p-5 mb-5 max-w-2xl mx-auto flex justify-between rounded-md shadow-md">
         {!editMode ? (
           <>
-            <div className="capitalize bg-slate-300 p-5 mb-5 max-w-2xl mx-auto">
+            <div className="capitalize border rounded-md shadow-md p-5 mb-5 max-w-2xl w-full">
               <h3 className="text-lg font-bold mb-3">Hobbies</h3>
               {loggedInUser ? (
                 <>

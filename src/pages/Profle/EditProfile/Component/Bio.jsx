@@ -45,8 +45,8 @@ const Bio = () => {
   return (
     <>
       {loggedInUser?.profile?.bio ? (
-        <div className="capitalize bg-slate-300 p-5 mb-5 max-w-2xl mx-auto flex justify-between rounded-md shadow-md">
-          <div className="capitalize bg-slate-300 p-5 mb-5 max-w-2xl mx-auto">
+        <div className="capitalize border p-4 mb-5 max-w-2xl mx-auto flex justify-between rounded-md shadow-md">
+          <div className="capitalize border p-4 rounded-md shadow-md mb-5 max-w-2xl mx-auto">
             <div className="w-full">
               {edit ? (
                 <>

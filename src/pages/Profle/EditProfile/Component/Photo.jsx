@@ -35,7 +35,6 @@ const Photo = () => {
           loggedInUser?.profile?._id
         );
         setDetail(response.result);
-        console.log("detail is ", detail);
       }
     } catch (exception) {
       throw exception;
@@ -79,7 +78,7 @@ const Photo = () => {
 
   return (
     <>
-      <div className="w-[35%] mb-5 mt-[6rem] bg-white mx-auto flex justify-between shadow-md items-center rounded-3xl overflow-hidden">
+      <div className="w-[35%] mb-5 mt-[6rem] border p-4 mx-auto flex justify-between shadow-md items-center rounded-3xl overflow-hidden">
         <form className="mx-auto" onSubmit={handleSubmit(onSubmit)}>
           <div className="w-full min-h-[50vh] h-full flex flex-col justify-center items-center bg-white">
             <h3 className="text-center font-semibold text-2xl mb-3">
