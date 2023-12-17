@@ -33,32 +33,18 @@ const Header = () => {
         <div className="Navbar-items">
           <ul className="flex gap-3 md:gap-6 justify-end w-full">
             <li className="navbar-item mt-2">
-              <NavLink
-                className="navbar-link cool-link text-sm md:text-base"
-                aria-current="page"
-                to="/"
-              >
-                Home
-              </NavLink>
-            </li>
-            <li className="navbar-item mt-2">
-              <NavLink
-                className="navbar-link cool-link text-sm md:text-base"
-                to="/"
-              >
-                About Bihe.com
-              </NavLink>
-            </li>
-            <li className="navbar-item mt-2">
-              <NavLink
-                className="navbar-link cool-link text-sm md:text-base"
-                to="/"
-              >
-                Help?
-              </NavLink>
+              {!loggedInUser ? (
+                <NavLink
+                  className="navbar-link cool-link text-sm md:text-base"
+                  to="/"
+                >
+                  Already a Member ?
+                </NavLink>
+              ) : (
+                ""
+              )}
             </li>
           </ul>
-
           {!loggedInUser ? (
             <Link to="/login">
               <button className="nav-btn text-sm md:text-base text-white">

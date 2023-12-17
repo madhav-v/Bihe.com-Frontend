@@ -12,7 +12,7 @@ const Footer = () => {
   return (
     <>
       <footer className="footer bg-white">
-        <div className="footertop">
+        {/* <div className="footertop">
           <ul className="footertopfirst">
             <li>
               <h3>Quicks Link</h3>
@@ -55,7 +55,7 @@ const Footer = () => {
               <Link to="/">Tutorials/Guides</Link>
             </li>
           </ul>
-        </div>
+        </div> */}
 
         <div className="footerbuttom">
           <div className="copyright">
