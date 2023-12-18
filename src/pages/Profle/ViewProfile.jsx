@@ -60,9 +60,7 @@ const ViewProfile = () => {
                 <img
                   src={
                     loggedInUser && loggedInUser.profile.image
-                      ? import.meta.env.VITE_IMAGE_URL +
-                        "/profile/" +
-                        loggedInUser?.profile.image
+                      ? loggedInUser?.profile.image
                       : "https://www.caltrain.com/files/images/2021-09/default.jpg"
                   }
                   alt=""

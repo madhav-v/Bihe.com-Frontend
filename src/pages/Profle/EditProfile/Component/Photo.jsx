@@ -9,22 +9,24 @@ const Photo = () => {
   const { register, handleSubmit } = useForm();
   const [selectedImage, setSelectedImage] = React.useState(null);
   const [detail, setDetail] = useState();
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const loggedInUser = useSelector((state) => state.User.loggedInUser);
 
   const onSubmit = async (data) => {
     try {
-      //   const formData = new FormData();
-      //   formData.append("image", data.image.value);
+      setIsLoading(true);
       const response = await profileSvc.addPhoto(data);
       if (response) {
         console.log(response);
         toast.success("Image uploaded successfully");
       } else {
-        toast.error("Something went wrong");
+        toast.error("Please add photo");
       }
     } catch (exception) {
       console.log(exception);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -48,9 +50,7 @@ const Photo = () => {
 
   useEffect(() => {
     if (detail) {
-      setSelectedImage(
-        import.meta.env.VITE_IMAGE_URL + "/profile/" + detail?.image
-      );
+      setSelectedImage(detail.image);
     }
   }, [detail]);
 
@@ -114,9 +114,12 @@ const Photo = () => {
             </label>
             <button
               type="submit"
-              className="px-4 py-2 bg-red-500 rounded-xl text-white text-xl my-3"
+              className={`px-4 py-2 bg-red-500 rounded-xl text-white text-xl my-3 ${
+                isLoading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+              disabled={isLoading}
             >
-              Add a Photo +
+              {isLoading ? "Uploading..." : "Upload Photo"}
             </button>
           </div>
         </form>

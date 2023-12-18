@@ -43,7 +43,7 @@ const SideNavBar = () => {
               <img
                 src={
                   user && user.image
-                    ? import.meta.env.VITE_IMAGE_URL + "/profile/" + user?.image
+                    ? user.image
                     : "https://www.caltrain.com/files/images/2021-09/default.jpg"
                 }
                 alt="Profile Image"

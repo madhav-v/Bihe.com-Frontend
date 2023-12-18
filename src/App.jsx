@@ -4,7 +4,6 @@ import LoginPage from "./pages/Login";
 import RegisterPage from "./pages/Register";
 import ResetPassword from "./pages/ResetPassword/resetPassword";
 import SetPassword from "./pages/ResetPassword/setPassword";
-import UserDashboard from "./pages/UserDashboard";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import TermsAndConditions from "./pages/Terms and Condition";
