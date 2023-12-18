@@ -16,10 +16,7 @@ const Photo = () => {
   const onSubmit = async (data) => {
     try {
       setIsLoading(true);
-      const formData = new FormData();
-      formData.append("image", data.image);
-
-      const response = await profileSvc.addPhoto(formData);
+      const response = await profileSvc.addPhoto(data);
       if (response) {
         toast.success("Image uploaded successfully");
       } else {
