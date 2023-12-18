@@ -18,10 +18,10 @@ const Photo = () => {
       setIsLoading(true);
       const response = await profileSvc.addPhoto(data);
       if (response) {
-        console.log(response);
+        console.log("response is", response);
         toast.success("Image uploaded successfully");
       } else {
-        toast.error("Please add photo");
+        toast.error("Something went wrong");
       }
     } catch (exception) {
       console.log(exception);

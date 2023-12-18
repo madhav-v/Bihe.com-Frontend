@@ -27,8 +27,8 @@ const FirstForm = ({
   ];
 
   const genderOptions = [
-    { value: "Man", label: "Man" },
-    { value: "woman", label: "Woman" },
+    { value: "man", label: "Male" },
+    { value: "woman", label: "Female" },
     { value: "other", label: "Other" },
   ];
 
@@ -67,7 +67,7 @@ const FirstForm = ({
 
   const casteOptions = [
     { value: "brahmin", label: "Brahmin" },
-    { value: "chhetri", label: "chhetri" },
+    { value: "chhetri", label: "Chhetri" },
     { value: "thakuri", label: "Thakuri" },
     { value: "magar", label: "Magar" },
     { value: "tamang", label: "Tamang" },
@@ -174,7 +174,7 @@ const FirstForm = ({
               />
             )}
           />
-           <Controller
+          <Controller
             name="caste"
             control={control}
             render={({ field }) => (

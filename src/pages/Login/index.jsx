@@ -22,7 +22,6 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm();
 
-
   const onSubmit = async (data) => {
     setIsLoading(true);
     try {
@@ -50,7 +49,7 @@ const LoginPage = () => {
       }
     } catch (exception) {
       setIsLoading(false);
-      toast.error("Invalid Credentials");
+      toast.error("Something went wrong");
       console.log(exception);
     }
   };
@@ -135,7 +134,7 @@ const LoginPage = () => {
           </div>
           <Button text="Login" />
         </form>
-      
+
         <div>
           Dont have an account?{" "}
           <NavLink to={"/register"} className="text-blue-500 hover:underline">

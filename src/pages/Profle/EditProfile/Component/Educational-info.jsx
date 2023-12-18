@@ -50,11 +50,10 @@ const EducationalInfo = () => {
   ];
 
   const incomeOptions = [
-    { value: "lessThan1Lakh", label: "Less than ₹1 Lakh" },
-    { value: "1Lakhto3Lakh", label: "₹1 Lakh - ₹3 Lakh" },
-    { value: "3Lakhto5Lakh", label: "₹3 Lakh - ₹5 Lakh" },
-    { value: "5Lakhto10Lakh", label: "₹5 Lakh - ₹10 Lakh" },
-    { value: "moreThan10Lakh", label: "More than ₹10 Lakh" },
+    { value: "0-3", label: "Less than 3 Lakhs" },
+    { value: "3-6", label: "3 - 6 Lakhs" },
+    { value: "6-10", label: "6 - 10 Lakhs" },
+    { value: "10+", label: "More than 10 Lakhs" },
   ];
 
   const heightOptions = [
@@ -331,7 +330,7 @@ const EducationalInfo = () => {
                 </div>
 
                 <div className="w-full flex justify-around items-center">
-                  <Controller
+                  {/* <Controller
                     name="preferredFamilyValues"
                     control={control}
                     render={({ field }) => (
@@ -345,7 +344,7 @@ const EducationalInfo = () => {
                         options={familyValuesOptions}
                       />
                     )}
-                  />
+                  /> */}
                   <Controller
                     name="preferredEducation"
                     control={control}
@@ -361,9 +360,6 @@ const EducationalInfo = () => {
                       />
                     )}
                   />
-                </div>
-
-                <div className="w-full flex justify-around items-center">
                   <Controller
                     name="preferredOccupation"
                     control={control}
@@ -379,6 +375,9 @@ const EducationalInfo = () => {
                       />
                     )}
                   />
+                </div>
+
+                <div className="w-full flex justify-around items-center">
                   <Controller
                     name="preferredIncome"
                     control={control}

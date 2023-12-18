@@ -30,6 +30,10 @@ import ConnectionLayout from "./pages/Connections/index.jsx";
 import NotificationSection from "./pages/Notifications/index.jsx";
 import Dashboard from "./pages/Dashboard/dashboard.jsx";
 import DashboardSection from "./pages/Dashboard/dashboardsection.jsx";
+import EducationPreferrence from "./pages/preferrencesMatches/educationPreferrences.jsx";
+import OccupationPreferrence from "./pages/preferrencesMatches/occupationPreferrences.jsx";
+import IncomePreferrence from "./pages/preferrencesMatches/incomePreferrence.jsx";
+import MatchProfile from "./pages/Match Profile/index.jsx";
 // import ChatPanel from "./pages/chat/index.jsx";
 
 function App() {
@@ -62,7 +66,16 @@ function App() {
             {/* <Route path="search" element={<SearchResultSection />} /> */}
             {/* <Route path="profile" element={<UserProfileSection />} /> */}
           </Route>
-
+          <Route
+            path="/preferrenceEducation"
+            element={<EducationPreferrence />}
+          />
+          <Route
+            path="/preferrenceOccupation"
+            element={<OccupationPreferrence />}
+          />
+          <Route path="/preferrenceIncome" element={<IncomePreferrence />} />
+          <Route path="/match/:id" element={<MatchProfile />} />
           <Route
             path="/profile/info"
             element={<CheckPermission accessBy={"user"} Component={<Form />} />}

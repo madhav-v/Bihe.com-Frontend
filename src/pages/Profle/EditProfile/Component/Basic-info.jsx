@@ -55,8 +55,8 @@ const BasicInfo = () => {
   ];
 
   const genderOptions = [
-    { value: "Man", label: "Man" },
-    { value: "woman", label: "Woman" },
+    { value: "man", label: "Male" },
+    { value: "woman", label: "Female" },
     { value: "other", label: "Other" },
   ];
 
