@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const ChatContext = createContext();
@@ -10,13 +10,16 @@ const ChatProvider = ({ children }) => {
   const [chats, setChats] = useState();
 
   const navigate = useNavigate();
+
   useEffect(() => {
-    const userInfo = JSON.stringify(localStorage.getItem("user"));
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     setUser(userInfo);
+
     if (!userInfo) {
       navigate("/");
     }
-  }, [navigate]);
+  }, [history]);
+
   return (
     <ChatContext.Provider
       value={{

@@ -1,8 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import NavBar from "../Navbar";
 import ConversationBox from "./comp/ConversationBox";
+import img from "../../../public/sr1.jpg";
 
 const Chat = () => {
+  const [converstaion, setConversation] = useState([
+    {
+      fullname: "Madhav Dhungana",
+      image: img,
+      lastMessage: "Last Message #1",
+      timeStamp: "today",
+    },
+    {
+      fullname: "Shruti Khanal",
+      image: img,
+      lastMessage: "Last Message #1",
+      timeStamp: "today",
+    },
+    {
+      fullname: "Ajita Giri",
+      image: img,
+      lastMessage: "Last Message #1",
+      timeStamp: "today",
+    },
+  ]);
   return (
     <>
       <NavBar />
@@ -17,7 +38,9 @@ const Chat = () => {
           </div>
 
           <div className="chat-sidebar w-full px-2">
-            <ConversationBox />
+            {converstaion.map((converstaio, index) => {
+              return <ConversationBox key={index} props={converstaio} />;
+            })}
           </div>
         </div>
       </div>
