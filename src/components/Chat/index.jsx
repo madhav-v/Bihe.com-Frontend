@@ -2,28 +2,37 @@ import React, { useState } from "react";
 import NavBar from "../Navbar";
 import ConversationBox from "./comp/ConversationBox";
 import img from "../../../public/sr1.jpg";
+import { useNavigate } from "react-router-dom";
 
-const Chat = () => {
+const Chat = (props) => {
+  const navigate = useNavigate();
   const [converstaion, setConversation] = useState([
     {
+      id: 123,
       fullname: "Madhav Dhungana",
       image: img,
       lastMessage: "Last Message #1",
       timeStamp: "today",
     },
     {
+      id: 123,
       fullname: "Shruti Khanal",
       image: img,
       lastMessage: "Last Message #1",
       timeStamp: "today",
     },
     {
+      id: 123,
       fullname: "Ajita Giri",
       image: img,
       lastMessage: "Last Message #1",
       timeStamp: "today",
     },
   ]);
+  const handleConversationClick = (id) => {
+    console.log(id);
+    navigate(`/chat/conversation/${id}`);
+  };
   return (
     <>
       <NavBar />
@@ -39,7 +48,15 @@ const Chat = () => {
 
           <div className="chat-sidebar w-full px-2">
             {converstaion.map((converstaio, index) => {
-              return <ConversationBox key={index} props={converstaio} />;
+              return (
+                <div
+                  key={index}
+                  onClick={() => handleConversationClick(converstaio.id)}
+                  className="cursor-pointer"
+                >
+                  <ConversationBox props={converstaio} />
+                </div>
+              );
             })}
           </div>
         </div>

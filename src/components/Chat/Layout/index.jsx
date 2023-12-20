@@ -1,14 +1,23 @@
 import React from "react";
 import Chat from "..";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
+import ChatPanel from "../comp/ChatPanel";
+import ConversationBox from "../comp/ConversationBox";
 
 function ChatLayout() {
+  const {id}= useParams()
+  const navigate = useNavigate()
+  const openConversation = (conversationId)=>{
+    navigate(`/chat/conversation/${conversationId}`)
+  }
   return (
-    <div className="w-full min-h-[100vh] md:h-[90vh] md:bg-screen pt-[10vh] mt-10">
-      <div className="chatsection md:py-5 md:px-4">
-        <div className="messagesection">
-          <Chat />
+    <div className="w-full mt-[5.5%]">
+      <div className="">
+        <div className=" ">
+          <Chat openConversation={openConversation} />
           <Outlet />
+          {/* <ChatPanel/> */}
+          {/* <ConversationBox/> */}
         </div>
       </div>
     </div>

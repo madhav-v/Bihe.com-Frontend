@@ -54,15 +54,10 @@ function App() {
           <Route path="/forgetPassword" element={<ResetPassword />} />
           <Route path="/setPassword/:token" element={<SetPassword />} />
           <Route path="/terms" element={<TermsAndConditions />} />
-          <Route
-            path="/chat"
-            element={
-              <ChatLayout>
-                <Route index element={<Chat />} />
-                <Route path="conversation/:id" element={<ChatPanel />} />
-              </ChatLayout>
-            }
-          />
+          <Route path="/chat" element={<ChatLayout />}>
+            <Route index element={<Chat />} />
+            <Route path="conversation/:id" element={<ChatPanel />} />
+          </Route>
           {/* </Route> */}
           <Route path="/connection" element={<ConnectionLayout />} />
           <Route path="/notification" element={<NotificationSection />} />
