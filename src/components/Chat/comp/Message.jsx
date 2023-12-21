@@ -12,7 +12,7 @@ function Message({ isUserCreator, message }) {
         {message && <span className="text-sm">{message.author.username}</span>}
         {message.content && (
           <span
-            className={`flex flex-col px-2 py-2 rounded-xl bg-red-500`}
+            className={`flex flex-col px-2 py-2 rounded-xl text-white bg-red-500`}
           >
             {message.content}
           </span>

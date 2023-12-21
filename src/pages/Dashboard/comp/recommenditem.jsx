@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import profileAvatar from "../../../../public/sr1.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import chatSvc from "../../../services/chat.service";
+import { toast } from "react-toastify";
 
 function RecommendItem(props) {
   const [request, setRequest] = useState(() => {
-    // Try to retrieve the state from localStorage, default to undefined if not found
     const storedState = localStorage.getItem("chatRequestState");
     return storedState ? JSON.parse(storedState) : undefined;
   });
@@ -15,6 +15,11 @@ function RecommendItem(props) {
       const response = await chatSvc.sendChatRequest({
         userId: props.recommend._id,
       });
+      if (response.status) {
+        toast.success("Request Sent Successfully");
+      } else {
+        toast.warn("Request Already Sent!!");
+      }
       setRequest(response);
 
       // Save the state to localStorage
@@ -28,7 +33,6 @@ function RecommendItem(props) {
     // Cleanup localStorage when the component is unmounted
     return () => localStorage.removeItem("chatRequestState");
   }, []);
-
 
   return (
     <div className="mt-5 capitalize rounded-lg bg-white overflow-hidden shadow-sm">
