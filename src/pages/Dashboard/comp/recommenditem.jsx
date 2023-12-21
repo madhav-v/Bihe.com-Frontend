@@ -1,9 +1,35 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import profileAvatar from "../../../../public/sr1.jpg";
 import { Link, useNavigate } from "react-router-dom";
+import chatSvc from "../../../services/chat.service";
 
 function RecommendItem(props) {
+  const [request, setRequest] = useState(() => {
+    // Try to retrieve the state from localStorage, default to undefined if not found
+    const storedState = localStorage.getItem("chatRequestState");
+    return storedState ? JSON.parse(storedState) : undefined;
+  });
   const navigate = useNavigate();
+  const sendChatRequest = async () => {
+    try {
+      const response = await chatSvc.sendChatRequest({
+        userId: props.recommend._id,
+      });
+      setRequest(response);
+
+      // Save the state to localStorage
+      localStorage.setItem("chatRequestState", JSON.stringify(response));
+    } catch (exception) {
+      console.error("Error sending chat request:", exception);
+      setRequest("error");
+    }
+  };
+  useEffect(() => {
+    // Cleanup localStorage when the component is unmounted
+    return () => localStorage.removeItem("chatRequestState");
+  }, []);
+
+
   return (
     <div className="mt-5 capitalize rounded-lg bg-white overflow-hidden shadow-sm">
       <div className="w-full h-[200px] overflow-hidden">
@@ -47,9 +73,10 @@ function RecommendItem(props) {
           </button>
           <button
             className="px-2 py-2 w-full rounded-xl text-md border-[2px] border-[rgba(0, 0, 0, 0.4)]"
-            // onClick={() => sendConnectionRequest()}
+            onClick={sendChatRequest}
+            disabled={request && request.status === false}
           >
-            Connect
+            {request && request.status === false ? "Request Sent" : "Connect"}
           </button>
         </div>
       </div>
