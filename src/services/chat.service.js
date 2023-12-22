@@ -12,6 +12,30 @@ class ChatService extends HttpService {
       throw exception;
     }
   };
+  getConnectionRequests = async () => {
+    try {
+      const response = await this.getRequest("v1/chat/connection-requests", {
+        auth: true,
+      });
+      return response;
+    } catch (exception) {
+      throw exception;
+    }
+  };
+  acceptChatRequest = async (id) => {
+    try {
+      const response = await this.putRequest(
+        `v1/chat/accept-request/${id}`,
+        {},
+        {
+          auth: true,
+        }
+      );
+      return response;
+    } catch (exception) {
+      throw exception;
+    }
+  };
 }
 
 const chatSvc = new ChatService();

@@ -10,6 +10,7 @@ const EducationPreferrence = () => {
     try {
       const detail = await preferrenceSvc.getByEducation();
       setEducationInfo(detail.result);
+      
     } catch (exception) {
       throw exception;
     }

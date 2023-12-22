@@ -13,7 +13,7 @@ function RecommendItem(props) {
   const sendChatRequest = async () => {
     try {
       const response = await chatSvc.sendChatRequest({
-        userId: props.recommend._id,
+        userId: props.user,
       });
       if (response.status) {
         toast.success("Request Sent Successfully");
