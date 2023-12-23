@@ -3,9 +3,11 @@ import NotificationCard from "./comp/NotificationCard";
 import NavBar from "../../components/Navbar";
 import chatSvc from "../../services/chat.service";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 function NotificationSection() {
   const [chatRequests, setChatRequests] = useState([]);
+  const navigate = useNavigate();
   const [sId, setSId] = useState();
 
   const fetchChatRequests = async () => {
@@ -40,6 +42,8 @@ function NotificationSection() {
       const response = await chatSvc.acceptChatRequest(sId);
       if (response.status) {
         toast.success(response.msg);
+        console.log(response.result.sender.profile);
+        navigate(`/match/${response.result.sender.profile}`);
       } else {
         toast.error(response.msg);
       }
