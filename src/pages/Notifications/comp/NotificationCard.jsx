@@ -3,16 +3,16 @@ import { useState, useEffect } from "react";
 import profileAvatar from "../../../../public/sr1.jpg";
 import chatSvc from "../../../services/chat.service";
 
-const NotificationCard = ({ sender, sId, onAccept }) => {
+const NotificationCard = ({ sender, sId, onAccept, onReject }) => {
   const handleAccept = async () => {
     try {
       if (!sender || !sender._id || !sId) {
         console.error("Invalid data:", sender, sId);
         return;
       }
-
-      // Use sId instead of sender._id
-      onAccept(sId);
+      const userID = sender._id;
+      console.log("userID",userID);
+      onAccept(sId, userID);
     } catch (exception) {
       console.log(exception);
     }
@@ -21,6 +21,17 @@ const NotificationCard = ({ sender, sId, onAccept }) => {
   if (!sender || !sender.profile) {
     return null;
   }
+  const handleReject = async () => {
+    try {
+      if (!sender || !sender._id || !sId) {
+        console.error("Invalid data:", sender, sId);
+        return;
+      }
+      onReject(sId);
+    } catch (exception) {
+      console.log(exception);
+    }
+  };
 
   return (
     <div className="flex items-center justify-between p-4 border-b border-[rgba(0,0,0,0.4)] my-4">
@@ -46,7 +57,10 @@ const NotificationCard = ({ sender, sId, onAccept }) => {
         >
           Accept
         </button>
-        <button className="text-white bg-red-500 px-3 py-1 rounded mt-2">
+        <button
+          onClick={handleReject}
+          className="text-white bg-red-500 px-3 py-1 rounded mt-2"
+        >
           Delete
         </button>
       </div>

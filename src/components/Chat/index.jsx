@@ -1,36 +1,50 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "../Navbar";
 import ConversationBox from "./comp/ConversationBox";
 import img from "../../../public/sr1.jpg";
 import { useNavigate } from "react-router-dom";
+import chatSvc from "../../services/chat.service";
 
 const Chat = (props) => {
   const navigate = useNavigate();
-  const [converstaion, setConversation] = useState([
-    {
-      id: 123,
-      fullname: "Madhav Dhungana",
-      image: img,
-      lastMessage: "Last Message #1",
-      timeStamp: "today",
-    },
-    {
-      id: 123,
-      fullname: "Shruti Khanal",
-      image: img,
-      lastMessage: "Last Message #1",
-      timeStamp: "today",
-    },
-    {
-      id: 123,
-      fullname: "Ajita Giri",
-      image: img,
-      lastMessage: "Last Message #1",
-      timeStamp: "today",
-    },
-  ]);
+  // const [converstaion, setConversation] = useState([
+  //   {
+  //     id: 123,
+  //     fullname: "Madhav Dhungana",
+  //     image: img,
+  //     lastMessage: "Last Message #1",
+  //     timeStamp: "today",
+  //   },
+  //   {
+  //     id: 123,
+  //     fullname: "Shruti Khanal",
+  //     image: img,
+  //     lastMessage: "Last Message #1",
+  //     timeStamp: "today",
+  //   },
+  //   {
+  //     id: 123,
+  //     fullname: "Ajita Giri",
+  //     image: img,
+  //     lastMessage: "Last Message #1",
+  //     timeStamp: "today",
+  //   },
+  // ]);
+  const [conversations, setConversations] = useState([]);
+  const chats = async () => {
+    try {
+      const response = await chatSvc.getConversations();
+      if (response.status) {
+        setConversations(response.result);
+      }
+    } catch (exception) {
+      console.log(exception);
+    }
+  };
+  useEffect(() => {
+    chats();
+  }, [conversations]);
   const handleConversationClick = (id) => {
-    console.log(id);
     navigate(`/chat/conversation/${id}`);
   };
   return (
@@ -47,14 +61,14 @@ const Chat = (props) => {
           </div>
 
           <div className="chat-sidebar w-full px-2">
-            {converstaion.map((converstaio, index) => {
+            {conversations?.map((converstaion, index) => {
               return (
                 <div
                   key={index}
-                  onClick={() => handleConversationClick(converstaio.id)}
+                  onClick={() => handleConversationClick(converstaion._id)}
                   className="cursor-pointer"
                 >
-                  <ConversationBox props={converstaio} />
+                  <ConversationBox props={converstaion} />
                 </div>
               );
             })}

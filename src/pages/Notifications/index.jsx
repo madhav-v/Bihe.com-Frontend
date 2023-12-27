@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 function NotificationSection() {
+  const [userId, setUserId] = useState();
   const [chatRequests, setChatRequests] = useState([]);
   const navigate = useNavigate();
   const [sId, setSId] = useState();
@@ -13,12 +14,10 @@ function NotificationSection() {
   const fetchChatRequests = async () => {
     try {
       const response = await chatSvc.getConnectionRequests();
-      // Check if response.result is an array with at least one item
       if (Array.isArray(response.result) && response.result.length > 0) {
         setSId(response.result[0]._id);
-        // Extract the sender field from each item in the array
         const senders = response.result.map((item) => item.sender);
-        // Set the senders in the state
+        console.log("senders", senders);
         setChatRequests(senders);
       } else {
         console.error("Unexpected response format:", response);
@@ -32,21 +31,36 @@ function NotificationSection() {
     fetchChatRequests();
   }, []);
 
-  const handleAccept = async (sId) => {
+  const handleAccept = async (sId, userID) => {
     try {
-      // Update the state by removing the accepted request
       setChatRequests((prevRequests) =>
         prevRequests.filter((sender) => sender._id !== sId)
       );
-      // Call the acceptChatRequest function with the senderId
       const response = await chatSvc.acceptChatRequest(sId);
       if (response.status) {
-        toast.success(response.msg);
-        console.log(response.result.sender.profile);
-        navigate(`/match/${response.result.sender.profile}`);
+        const chatResponse = await chatSvc.accessChat({ userId: userID });
+        console.log("chatResponse", chatResponse);
+        if (chatResponse.status) {
+          toast.success(response.msg);
+          navigate(`/chat/conversation/${response.result.sender._id}`);
+        }
       } else {
         toast.error(response.msg);
       }
+    } catch (exception) {
+      console.log(exception);
+    }
+  };
+  const handleReject = async (sId) => {
+    try {
+      setChatRequests((prevRequests) =>
+        prevRequests.filter((sender) => sender._id !== sId)
+      );
+      const response = await chatSvc.rejectChatRequest(sId);
+      if (response.status) {
+        toast.error("Request Deleted");
+      }
+      console.log(response.data);
     } catch (exception) {
       console.log(exception);
     }
@@ -69,6 +83,7 @@ function NotificationSection() {
                 sId={sId}
                 sender={sender}
                 onAccept={handleAccept}
+                onReject={handleReject}
               />
             ))}
           </div>
