@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 // import Picker from "@emoji-mart/react";
 import { RiSendPlaneFill } from "react-icons/ri";
 import { BsEmojiSmile } from "react-icons/bs"; // Assuming you have this import
@@ -10,15 +10,28 @@ import profileSvc from "../../../services/profile.service";
 import authSvc from "../../../services/auth.service";
 
 function ChatPanel() {
+  const chatBoxRef = useRef(null);
+
   const params = useParams();
   const [newMessageContent, setNewMessageContent] = useState([]);
   const [conversationMessages, setConversationMessages] = useState();
   const [conversations, setConversations] = useState([]);
+  const [sender, setSender] = useState();
   const chats = async () => {
     try {
       const response = await authSvc.getUserProfileById(params.id);
       if (response.status) {
         setConversations(response.result);
+      }
+    } catch (exception) {
+      console.log(exception);
+    }
+  };
+  const messageSender = async () => {
+    try {
+      const response = await authSvc.getUserWithProfile();
+      if (response.status) {
+        setSender(response.result);
       }
     } catch (exception) {
       console.log(exception);
@@ -49,11 +62,17 @@ function ChatPanel() {
       console.log(exception);
     }
   };
-
+console.log("covo",conversationMessages);
   useEffect(() => {
     chats();
     fetchMessages();
-  }, [params.id, conversations]);
+    messageSender();
+  }, [params.id, conversations, sender]);
+  useLayoutEffect(() => {
+    if (chatBoxRef.current) {
+      chatBoxRef.current.scrollTop = chatBoxRef.current.scrollHeight;
+    }
+  }, [conversationMessages]);
   return (
     <>
       <div className="w-[70%] ml-[30%] min-h-[90vh] md:h-full rounded-xl overflow-hidden relative md:rounded-tl-none md:rounded-bl-none">
@@ -79,15 +98,8 @@ function ChatPanel() {
           </div>
           <div className="w-full h-[72vh]">
             <div className="chat-box w-full h-full flex flex-col-reverse overflow-y-auto">
-              {/* {conversationMessages &&
-                conversationMessages.length === 0(<span>NO Conversation</span>)} */}
-              {conversationMessages?.map((message, index) => (
-                <Message
-                  key={index}
-                  message={message}
-                  // isUserCreator={message.author.id === user[0].id}
-                />
-                
+              {conversationMessages?.reverse().map((message, index) => (
+                <Message key={index} message={message} sender={sender} />
               ))}
             </div>
           </div>
