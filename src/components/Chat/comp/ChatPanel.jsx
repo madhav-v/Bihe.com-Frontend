@@ -3,7 +3,7 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { RiSendPlaneFill } from "react-icons/ri";
 import { BsEmojiSmile } from "react-icons/bs"; // Assuming you have this import
 import profileAvatar from "../../../../public/sr2.jpg";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Message from "./Message";
 import chatSvc from "../../../services/chat.service";
 import profileSvc from "../../../services/profile.service";
@@ -62,7 +62,6 @@ function ChatPanel() {
       console.log(exception);
     }
   };
-console.log("covo",conversationMessages);
   useEffect(() => {
     chats();
     fetchMessages();
@@ -87,20 +86,29 @@ console.log("covo",conversationMessages);
                 />
               </div>
               <div className="">
-                <div className="flex items-center ml-2">
-                  <p className="ml-2 text-lg">
-                    {" "}
-                    {conversations && conversations?.profile?.fullname}
-                  </p>
-                </div>
+                <Link
+                  to={`/match/${
+                    conversations?.profile && conversations?.profile._id
+                  }`}
+                >
+                  <div className="flex items-center ml-2">
+                    <p className="ml-2 text-lg">
+                      {" "}
+                      {conversations && conversations?.profile?.fullname}
+                    </p>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
           <div className="w-full h-[72vh]">
             <div className="chat-box w-full h-full flex flex-col-reverse overflow-y-auto">
-              {conversationMessages?.reverse().map((message, index) => (
-                <Message key={index} message={message} sender={sender} />
-              ))}
+              {conversationMessages
+                ?.slice()
+                .reverse()
+                .map((message, index) => (
+                  <Message key={index} message={message} sender={sender} />
+                ))}
             </div>
           </div>
           <div className="chat-write absolute bg-screen bottom-2 left-0 mb-3 w-full flex items-center ml-1">

@@ -1,8 +1,18 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function ConversationBox({ props }) {
+function ConversationBox({
+  props,
+  // ,
+  // sender
+}) {
   const { users } = props;
+  // console.log("users are", conversation);
+  // console.log("sender are", sender);
+  // const chattingPerson = sender
+  //   ? users.find((user) => user._id !== sender._id)
+  //   : null;
+
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -30,9 +40,6 @@ function ConversationBox({ props }) {
               {users[1]?.profile.fullname}
             </h6>
             <p className="text-sm">{props?.latestMessage?.content}</p>
-          </div>
-          <div className="flex flex-col items-end">
-            <span className="text-xs">{props?.createdAt}</span>
           </div>
         </div>
       </div>
