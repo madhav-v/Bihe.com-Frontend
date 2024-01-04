@@ -18,7 +18,6 @@ const NavBar = () => {
   const profileData = async () => {
     try {
       let response = await authSvc.getUserWithProfile();
-      console.log("res", response);
       setProfileDetails(response.result.profile);
     } catch (exception) {
       console.log(exception);

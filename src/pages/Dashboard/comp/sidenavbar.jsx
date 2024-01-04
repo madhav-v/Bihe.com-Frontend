@@ -47,7 +47,7 @@ const SideNavBar = () => {
                     : "https://www.caltrain.com/files/images/2021-09/default.jpg"
                 }
                 alt="Profile Image"
-                className="rounded-3xl p-2 w-[350px]"
+                className="rounded-3xl p-2 w-[350px] h-[320px] object-cover"
               />
             </div>
             <div className="mt-2 capitalize text-center">

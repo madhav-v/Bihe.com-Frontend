@@ -7,29 +7,6 @@ import chatSvc from "../../services/chat.service";
 
 const Chat = (props) => {
   const navigate = useNavigate();
-  // const [converstaion, setConversation] = useState([
-  //   {
-  //     id: 123,
-  //     fullname: "Madhav Dhungana",
-  //     image: img,
-  //     lastMessage: "Last Message #1",
-  //     timeStamp: "today",
-  //   },
-  //   {
-  //     id: 123,
-  //     fullname: "Shruti Khanal",
-  //     image: img,
-  //     lastMessage: "Last Message #1",
-  //     timeStamp: "today",
-  //   },
-  //   {
-  //     id: 123,
-  //     fullname: "Ajita Giri",
-  //     image: img,
-  //     lastMessage: "Last Message #1",
-  //     timeStamp: "today",
-  //   },
-  // ]);
   const [conversations, setConversations] = useState([]);
   const chats = async () => {
     try {
