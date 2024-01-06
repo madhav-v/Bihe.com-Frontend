@@ -9,6 +9,20 @@ function RecommendItem(props) {
     const storedState = localStorage.getItem("chatRequestState");
     return storedState ? JSON.parse(storedState) : undefined;
   });
+  const calculateAge = (dob) => {
+    const today = new Date();
+    const birthDate = new Date(dob);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+
+    if (
+      monthDiff < 0 ||
+      (monthDiff === 0 && today.getDate() < birthDate.getDate())
+    ) {
+      age--;
+    }
+    return age;
+  };
   const navigate = useNavigate();
   const sendChatRequest = async () => {
     try {
@@ -36,9 +50,9 @@ function RecommendItem(props) {
 
   return (
     <div className="mt-5 capitalize rounded-lg bg-white overflow-hidden shadow-sm">
-      <div className="w-full h-[200px] overflow-hidden">
+      <div className="w-full h-[290px] overflow-hidden">
         <img
-          className="w-full object-cover object-center"
+          className="w-full h-full object-cove"
           src={
             props.recommend.image
               ? props.recommend.image
@@ -54,7 +68,7 @@ function RecommendItem(props) {
         </h1>
         <div className="w-full flex justify-between px-2">
           <span className="text-md font-[500]">
-            {props.recommend.dateOfBirth} years
+            {calculateAge(props.recommend.dateOfBirth)} years
           </span>
           <span className="text-md font-[500]">{props.recommend.height}</span>
         </div>

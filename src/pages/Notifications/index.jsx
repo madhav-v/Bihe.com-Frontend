@@ -15,9 +15,9 @@ function NotificationSection() {
     try {
       const response = await chatSvc.getConnectionRequests();
       if (Array.isArray(response.result) && response.result.length > 0) {
+        console.log(response);
         setSId(response.result[0]._id);
         const senders = response.result.map((item) => item.sender);
-        console.log("senders", senders);
         setChatRequests(senders);
       } else {
         console.error("Unexpected response format:", response);

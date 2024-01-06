@@ -4,6 +4,8 @@ import profileAvatar from "../../../../public/sr1.jpg";
 import chatSvc from "../../../services/chat.service";
 
 const NotificationCard = ({ sender, sId, onAccept, onReject }) => {
+  console.log("sender",sender);
+  console.log("SID",sId);
   const handleAccept = async () => {
     try {
       if (!sender || !sender._id || !sId) {
