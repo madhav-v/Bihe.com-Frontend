@@ -21,7 +21,6 @@ function ChatPanel() {
   const chats = async () => {
     try {
       const response = await authSvc.getUserProfileById(params.id);
-      console.log("respinse", response);
       if (response.status) {
         setConversations(response.result);
       }

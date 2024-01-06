@@ -3,14 +3,12 @@ import { useSelector } from "react-redux";
 
 function ConversationBox({ props }) {
   const loggedInUser = useSelector((state) => state.User.loggedInUser);
-  console.log("logged", loggedInUser);
   const { users } = props;
   const otherUser = users.find((user) => user._id !== loggedInUser._id);
-  console.log("other", otherUser);
 
   return (
     <>
-      {otherUser && (
+      {loggedInUser && (
         <>
           {" "}
           <div className="chat-person w-full p-2 md:hover:bg-gray-200 md:rounded-xl overflow-hidden cursor-pointer">
