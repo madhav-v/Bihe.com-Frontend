@@ -42,6 +42,7 @@ const UserSlicer = createSlice({
   reducers: {
     setLoggedInUser: (state, action) => {
       state.loggedInUser = action.payload;
+      console.log("hi", state.loggedInUser);
     },
   },
 

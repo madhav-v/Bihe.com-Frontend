@@ -13,6 +13,7 @@ function ChatPanel() {
   const chatBoxRef = useRef(null);
 
   const params = useParams();
+
   const [newMessageContent, setNewMessageContent] = useState([]);
   const [conversationMessages, setConversationMessages] = useState();
   const [conversations, setConversations] = useState([]);
@@ -68,11 +69,18 @@ function ChatPanel() {
     fetchMessages();
     messageSender();
   }, [params.id, conversations, sender]);
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  };
   useLayoutEffect(() => {
     if (chatBoxRef.current) {
       chatBoxRef.current.scrollTop = chatBoxRef.current.scrollHeight;
     }
   }, [conversationMessages]);
+ 
   return (
     <>
       <div className="w-[70%] ml-[30%] min-h-[90vh] md:h-full rounded-xl overflow-hidden relative md:rounded-tl-none md:rounded-bl-none">
@@ -112,12 +120,14 @@ function ChatPanel() {
                 ))}
             </div>
           </div>
+          
           <div className="chat-write absolute bg-screen bottom-2 left-0 mb-3 w-full flex items-center ml-1">
             <input
               type="text"
               placeholder="Send a message"
               value={newMessageContent}
               onChange={(e) => setNewMessageContent(e.target.value)}
+              onKeyPress={handleKeyPress}
               className="w-full border p-2 pt-2 bg-white text-lg rounded-3xl align-middle bg-screen"
             />
             <span
@@ -127,6 +137,7 @@ function ChatPanel() {
               <RiSendPlaneFill className="text-xl" />
             </span>
           </div>
+         
         </div>
       </div>
     </>

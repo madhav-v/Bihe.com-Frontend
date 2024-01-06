@@ -2,7 +2,6 @@ import { formatRelative } from "date-fns";
 import React from "react";
 
 function Message({ message, sender }) {
-  // console.log("messsages are", message);
   const isCurrentUser = sender && message.sender._id === sender._id;
   return (
     <div
@@ -11,12 +10,6 @@ function Message({ message, sender }) {
       }`}
     >
       <div className="flex flex-col p-1">
-        {/* {message && <span className="text-sm">{message.chat}</span>} */}
-        {/* {message.sender && (
-          <span className="text-sm">
-            {isCurrentUser ? "You" : message.sender.profile.fullname}
-          </span>
-        )} */}
         {message.sender && message.sender.name && (
           <span className="text-sm">
             {isCurrentUser ? "You" : message.sender.name}
@@ -29,7 +22,6 @@ function Message({ message, sender }) {
             {message.content}
           </span>
         )}
-
         <span className="text-sm">
           {formatRelative(new Date(message.createdAt), new Date())}
         </span>
