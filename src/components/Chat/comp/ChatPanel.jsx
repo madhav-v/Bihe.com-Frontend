@@ -95,7 +95,7 @@ function ChatPanel() {
               </div>
               <div className="">
                 <Link
-                  to={`/match/${
+                  to={`/user/match/${
                     conversations?.profile && conversations?.profile._id
                   }`}
                 >

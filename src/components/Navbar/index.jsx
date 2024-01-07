@@ -60,18 +60,18 @@ const NavBar = () => {
               </NavLink>
             </li>
             <li className="navbar-item mt-2 hover:bg-screen py-2 px-3 rounded-xl hover:bg-[#e86f73]">
-              <NavLink className="navbar-link cool-link" to="/connection">
+              <NavLink className="navbar-link cool-link" to="/user/connection">
                 <BsPersonAdd size={30} color="white" />
               </NavLink>
             </li>
             <li className="navbar-item mt-2 hover:bg-screen py-2 px-3 rounded-xl hover:bg-[#e86f6f]">
-              <NavLink className="navbar-link cool-link" to="/chat">
+              <NavLink className="navbar-link cool-link" to="/user/chat">
                 <RiMessengerLine size={30} color="white" />
               </NavLink>
             </li>
 
             <li className="navbar-item mt-2 hover:bg-screen py-2 px-3 rounded-xl hover:bg-[#e86f6f]">
-              <NavLink className="navbar-link cool-link" to="/notification">
+              <NavLink className="navbar-link cool-link" to="/user/notification">
                 <MdNotificationsNone size={30} color="white" />
               </NavLink>
             </li>
@@ -88,7 +88,7 @@ const NavBar = () => {
                     <ul>
                       <li>
                         <NavLink
-                          to="/profile"
+                          to="/user/profile"
                           className="block px-4 py-2 text-black hover:bg-gray-200"
                         >
                           My Profile
@@ -96,7 +96,7 @@ const NavBar = () => {
                       </li>
                       <li>
                         <NavLink
-                          to={`/editProfile`}
+                          to={`/user/editProfile`}
                           className="block px-4 py-2 text-black hover:bg-gray-200"
                         >
                           Edit Profile

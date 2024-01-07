@@ -23,7 +23,6 @@ const IncomePreferrence = () => {
   }, [incomeInfo]);
   return (
     <>
-      <NavBar />
       <div className="mt-5 ml-3 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-4 gap-y-4">
         {incomeInfo && incomeInfo.length > 0 ? (
           incomeInfo.map((match, index) => (

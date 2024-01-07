@@ -42,7 +42,7 @@ function NotificationSection() {
         console.log("chatResponse", chatResponse);
         if (chatResponse.status) {
           toast.success(response.msg);
-          navigate(`/chat/conversation/${response.result.sender._id}`);
+          navigate(`/user/chat/conversation/${response.result.sender._id}`);
         }
       } else {
         toast.error(response.msg);
@@ -68,7 +68,6 @@ function NotificationSection() {
 
   return (
     <>
-      <NavBar />
       <div className="w-full min-h-screen bg-screen pt-[10vh] mt-10">
         <div className="flex w-[80%] mx-auto flex-col my-3 rounded-xl">
           <div className="px-2 border-b-2 border-[rgba(0, 0, 0, 0.6)] flex justify-between py-1">
@@ -77,15 +76,21 @@ function NotificationSection() {
             </h2>
           </div>
           <div className="w-full">
-            {chatRequests.map((sender) => (
-              <NotificationCard
-                key={sender._id}
-                sId={sId}
-                sender={sender}
-                onAccept={handleAccept}
-                onReject={handleReject}
-              />
-            ))}
+            {chatRequests.length === 0 ? (
+              <p className="ml-[65vh] mt-[100px]">
+                No notifications at the moment...
+              </p>
+            ) : (
+              chatRequests.map((sender) => (
+                <NotificationCard
+                  key={sender._id}
+                  sId={sId}
+                  sender={sender}
+                  onAccept={handleAccept}
+                  onReject={handleReject}
+                />
+              ))
+            )}
           </div>
         </div>
       </div>

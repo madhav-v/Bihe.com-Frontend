@@ -23,7 +23,7 @@ const MatchProfile = () => {
   }, [matchInfo]);
   return (
     <>
-      <NavBar />
+     
       {matchInfo && (
         <>
           <div className="h-full w-full mt-3 md:bg-screen md:pb-4 md:pt-[10vh]">

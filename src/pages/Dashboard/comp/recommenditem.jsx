@@ -85,7 +85,7 @@ function RecommendItem(props) {
         <div className="w-full flex justify-between mt-2 mb-2">
           <button
             className="px-2 py-2 w-full rounded-xl mr-1 text-md text-white bg-[#E61A52]"
-            onClick={() => navigate(`/match/${props.recommend._id}`)}
+            onClick={() => navigate(`/user/match/${props.recommend._id}`)}
           >
             View Profile
           </button>

@@ -14,7 +14,7 @@ function ChatLayout() {
     <div className="w-full mt-[5.5%]">
       <div className="">
         <div className=" ">
-          <Chat openConversation={openConversation} />
+          <Chat />
           <Outlet />
           {/* <ChatPanel/> */}
           {/* <ConversationBox/> */}

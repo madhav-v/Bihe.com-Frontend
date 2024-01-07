@@ -34,6 +34,7 @@ import EducationPreferrence from "./pages/preferrencesMatches/educationPreferren
 import OccupationPreferrence from "./pages/preferrencesMatches/occupationPreferrences.jsx";
 import IncomePreferrence from "./pages/preferrencesMatches/incomePreferrence.jsx";
 import MatchProfile from "./pages/Match Profile/index.jsx";
+import InnerLayout from "./pages/HomePage/Layout/innerLayout.jsx";
 // import ChatPanel from "./pages/chat/index.jsx";
 
 function App() {
@@ -54,45 +55,33 @@ function App() {
           <Route path="/forgetPassword" element={<ResetPassword />} />
           <Route path="/setPassword/:token" element={<SetPassword />} />
           <Route path="/terms" element={<TermsAndConditions />} />
-          <Route path="/chat" element={<ChatLayout />}>
-            <Route index element={<Chat />} />
-            <Route path="conversation/:id" element={<ChatPanel />} />
-          </Route>
-          {/* </Route> */}
-          <Route path="/connection" element={<ConnectionLayout />} />
-          <Route path="/notification" element={<NotificationSection />} />
-          <Route path="/user" element={<Dashboard />}>
-            <Route path="" element={<DashboardSection />} />
-            {/* <Route path="search" element={<SearchResultSection />} /> */}
-            {/* <Route path="profile" element={<UserProfileSection />} /> */}
-          </Route>
           <Route
-            path="/preferrenceEducation"
-            element={<EducationPreferrence />}
-          />
-          <Route
-            path="/preferrenceOccupation"
-            element={<OccupationPreferrence />}
-          />
-          <Route path="/preferrenceIncome" element={<IncomePreferrence />} />
-          <Route path="/match/:id" element={<MatchProfile />} />
-          <Route
-            path="/profile/info"
-            element={<CheckPermission accessBy={"user"} Component={<Form />} />}
-          />
-          <Route
-            path="/profile"
+            path="/user"
             element={
-              <CheckPermission accessBy={"user"} Component={<ViewProfile />} />
+              <CheckPermission accessBy={"user"} Component={<InnerLayout />} />
             }
-          />
-          <Route
-            path="/editProfile"
-            element={
-              <CheckPermission accessBy={"user"} Component={<EditProfile />} />
-            }
-          />
-
+          >
+            <Route index element={<Dashboard />} />
+            <Route path="chat" element={<ChatLayout />}>
+              <Route index element={<Chat />} />
+              <Route path="conversation/:id" element={<ChatPanel />} />
+            </Route>
+            <Route path="connection" element={<ConnectionLayout />} />
+            <Route path="notification" element={<NotificationSection />} />
+            <Route
+              path="preferrenceEducation"
+              element={<EducationPreferrence />}
+            />
+            <Route
+              path="preferrenceOccupation"
+              element={<OccupationPreferrence />}
+            />
+            <Route path="preferrenceIncome" element={<IncomePreferrence />} />
+            <Route path="match/:id" element={<MatchProfile />} />
+            <Route path="profile/info" element={<Form />} />
+            <Route path="profile" element={<ViewProfile />} />
+            <Route path="editProfile" element={<EditProfile />} />
+          </Route>
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </ChatProvider>

@@ -10,7 +10,7 @@ import ReligiousInfo from "./Component/Religious-info";
 const EditProfile = () => {
   return (
     <>
-      <NavBar />
+      
       <Photo />
       <Bio />
       {/* <PartnerMessage /> */}

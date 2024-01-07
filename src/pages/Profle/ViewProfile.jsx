@@ -1,33 +1,15 @@
-import NavBar from "../../components/Navbar";
-import img from "../../../public/background.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { getLoggedInUserWithProfile } from "../../reducers/user.reducer";
 import { useEffect, useState } from "react";
 import Loading from "../error/loading";
 import profileSvc from "../../services/profile.service";
 import { Link, Outlet } from "react-router-dom";
-import { VscDeviceCamera } from "react-icons/vsc";
 import { AiOutlineEdit } from "react-icons/ai";
-
-const calculateAge = (dateOfBirth) => {
-  const birthDate = new Date(dateOfBirth);
-  const today = new Date();
-  let age = today.getFullYear() - birthDate.getFullYear();
-  const monthDiff = today.getMonth() - birthDate.getMonth();
-  if (
-    monthDiff < 0 ||
-    (monthDiff === 0 && today.getDate() < birthDate.getDate())
-  ) {
-    age--;
-  }
-  return age;
-};
 
 const ViewProfile = () => {
   const dispatch = useDispatch();
   const loggedInUser = useSelector((state) => state.User.loggedInUser);
   const [detail, setDetail] = useState();
-  const [image, setImage] = useState();
   const getProfile = async () => {
     try {
       if (loggedInUser) {
@@ -51,7 +33,6 @@ const ViewProfile = () => {
 
   return (
     <>
-      <NavBar />
       {detail ? (
         <div className="h-full w-full mt-3 md:bg-screen md:pb-4 md:pt-[10vh]">
           <div className="h-full flex flex-col mx-auto bg-white px-2 py-2 md:px-4 md:pt-8 rounded-xl ">
@@ -80,7 +61,7 @@ const ViewProfile = () => {
                     </span>
                     <Link
                       className="w-full ml-2 font-bold text-white"
-                      to="/editProfile"
+                      to="/user/editProfile"
                     >
                       Edit Profile
                     </Link>

@@ -10,7 +10,6 @@ const EducationPreferrence = () => {
     try {
       const detail = await preferrenceSvc.getByEducation();
       setEducationInfo(detail.result);
-      
     } catch (exception) {
       throw exception;
     }
@@ -24,7 +23,6 @@ const EducationPreferrence = () => {
   }, [educationInfo]);
   return (
     <>
-      <NavBar />
       <div className="mt-5 ml-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-4 gap-y-4">
         {educationInfo && educationInfo.length > 0 ? (
           educationInfo.map((match, index) => (

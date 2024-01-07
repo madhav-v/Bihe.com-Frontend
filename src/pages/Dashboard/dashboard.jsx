@@ -1,13 +1,10 @@
 import React from "react";
-// import MyProfilesSidebar from "../../content/MyProfilesSidebar";
-// import ProfileBox from "../../newComponent/ProfileBox/ProfileBox";
 import { Outlet } from "react-router-dom";
 import "./styles.css";
 import NavBar from "../../components/Navbar";
 import SideNavBar from "./comp/sidenavbar";
-// import ProfileFilter from "../../newComponent/ProfileFilter/ProfileFilter";
-// import Filter from "../../content/Filter";
-// import NewFilter from "../../newComponent/NewFilter/NewFilter";
+import DashboardSection from "./dashboardsection";
+
 
 function Dashboard() {
   return (
@@ -18,7 +15,8 @@ function Dashboard() {
           <SideNavBar />
         </div>
         <div className="h-full flex flex-col w-[100%] md:basis-[76%] md:mr-4 md:mt-20">
-          <Outlet />
+          <DashboardSection/>
+          {/* <Outlet /> */}
         </div>
       </div>
     </>
