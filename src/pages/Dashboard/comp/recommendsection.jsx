@@ -80,7 +80,7 @@ function RecommendSection() {
         <div className="flex justify-between mx-5 my-4">
           {" "}
           <Link
-            to="/preferrenceEducation"
+            to="/user/preferrenceEducation"
             className="text-center relative hover:shadow-lg"
           >
             <div
@@ -100,7 +100,7 @@ function RecommendSection() {
             </div>
           </Link>
           <Link
-            to="/preferrenceOccupation"
+            to="/user/preferrenceOccupation"
             className="text-center relative hover:shadow-lg"
           >
             <div
@@ -120,7 +120,7 @@ function RecommendSection() {
             </div>
           </Link>
           <Link
-            to="/preferrenceIncome"
+            to="/user/preferrenceIncome"
             className="text-center relative hover:shadow-lg"
           >
             <div

@@ -71,13 +71,13 @@ const SideNavBar = () => {
             </div>
             <div className="flex flex-col p-2 mt-1 text-center">
               <Link
-                to="/profile"
+                to="/user/profile"
                 className="text-blue-500 text-lg hover:underline"
               >
                 View Your Profile
               </Link>
               <Link
-                to="/editProfile"
+                to="/user/editProfile"
                 className="text-blue-500 text-lg mb-2 hover:underline"
               >
                 Edit Your Profile
