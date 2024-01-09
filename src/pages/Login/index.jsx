@@ -36,9 +36,9 @@ const LoginPage = () => {
         localStorage.setItem("user", JSON.stringify(formattedData));
         toast.success("Login Successful");
         const user = await authSvc.getLoggedInUser();
-        console.log("user is", user);
+        // console.log("user is", user);
         setUserInfo(user.result);
-        console.log(userInfo);
+        // console.log(userInfo);
         // if (!user && !user.profile) {
         //   navigate("/profile/info");
         // } else {
@@ -57,7 +57,7 @@ const LoginPage = () => {
   useEffect(() => {
     if (userInfo) {
       if (!userInfo.profile) {
-        navigate("/profile/info");
+        navigate("/user/profile/info");
       } else {
         navigate("/user");
       }
