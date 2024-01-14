@@ -33,7 +33,6 @@ const Chat = (props) => {
 
   return (
     <>
-   
       <div className="w-full md:basis-1/3 rounded-xl md:rounded-tr-none md:rounded-br-none bg-white py-2 border-r-2 border-[rgba(0 , 0, 0, 0.8)] lg:fixed lg:h-[90vh] lg:w-[30vw] lg:bottom-0 lg:left-0">
         <div className="chat-friend-list h-full overflow-hidden ">
           <div className="w-full flex  flex-col justify-around relative">
@@ -52,6 +51,7 @@ const Chat = (props) => {
                 <br /> Please connect with your matches.
               </p>
             )}
+
             {!isLoading &&
               conversations.map((conversation, index) => (
                 <div

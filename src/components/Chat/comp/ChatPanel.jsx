@@ -13,14 +13,14 @@ function ChatPanel() {
   const chatBoxRef = useRef(null);
 
   const params = useParams();
-
+  let id = params.id;
   const [newMessageContent, setNewMessageContent] = useState([]);
   const [conversationMessages, setConversationMessages] = useState();
   const [conversations, setConversations] = useState([]);
   const [sender, setSender] = useState();
   const chats = async () => {
     try {
-      const response = await authSvc.getUserProfileById(params.id);
+      const response = await authSvc.getUserProfileById(id);
       if (response.status) {
         setConversations(response.result);
       }
@@ -67,7 +67,7 @@ function ChatPanel() {
     chats();
     fetchMessages();
     messageSender();
-  }, [params.id, conversations, sender]);
+  }, [id, conversations, sender]);
   const handleKeyPress = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
@@ -79,7 +79,7 @@ function ChatPanel() {
       chatBoxRef.current.scrollTop = chatBoxRef.current.scrollHeight;
     }
   }, [conversationMessages]);
- 
+
   return (
     <>
       <div className="w-[70%] ml-[30%] min-h-[90vh] md:h-full rounded-xl overflow-hidden relative md:rounded-tl-none md:rounded-bl-none">
@@ -119,7 +119,7 @@ function ChatPanel() {
                 ))}
             </div>
           </div>
-          
+
           <div className="chat-write absolute bg-screen bottom-2 left-0 mb-3 w-full flex items-center ml-1">
             <input
               type="text"
@@ -136,7 +136,6 @@ function ChatPanel() {
               <RiSendPlaneFill className="text-xl" />
             </span>
           </div>
-         
         </div>
       </div>
     </>
