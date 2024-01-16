@@ -44,24 +44,24 @@ const Chat = (props) => {
           </div>
 
           <div className="chat-sidebar w-full px-2">
-            {isLoading && <p>Loading...</p>}
+            {/* {isLoading && <p>Loading...</p>}
             {!isLoading && conversations.length === 0 && (
               <p className="ml-5">
                 No conversations to show....
                 <br /> Please connect with your matches.
               </p>
-            )}
+            )} */}
 
-            {!isLoading &&
-              conversations.map((conversation, index) => (
-                <div
-                  key={index}
-                  onClick={() => handleConversationClick(conversation._id)}
-                  className="cursor-pointer"
-                >
-                  <ConversationBox props={conversation} />
-                </div>
-              ))}
+            {/* {!isLoading && */}
+            {conversations.map((conversation, index) => (
+              <div
+                key={index}
+                onClick={() => handleConversationClick(conversation._id)}
+                className="cursor-pointer"
+              >
+                <ConversationBox props={conversation} />
+              </div>
+            ))}
           </div>
         </div>
       </div>
