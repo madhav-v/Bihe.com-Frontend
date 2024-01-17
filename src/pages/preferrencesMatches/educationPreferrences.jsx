@@ -11,6 +11,7 @@ const EducationPreferrence = () => {
   const educationDetails = async () => {
     try {
       const detail = await preferrenceSvc.getByEducation();
+     
       setEducationInfo(detail.result);
       setLoading(false);
     } catch (exception) {

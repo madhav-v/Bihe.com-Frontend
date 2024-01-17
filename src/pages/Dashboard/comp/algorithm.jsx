@@ -1,21 +1,24 @@
 import { useEffect, useState } from "react";
 import preferrenceSvc from "../../../services/preferreces.service";
 import RecommendItem from "./recommenditem";
+// import "./Matches.css"; // Import your CSS file
 
 const Matches = () => {
-  const [algoInfo, setAlgoInfo] = useState();
+  const [algoInfo, setAlgoInfo] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showAllMatches, setShowAllMatches] = useState(false);
+
   const algoMatches = async () => {
     try {
       const details = await preferrenceSvc.getMatchesByAlgorithm();
-      console.log(details.result);
-      setAlgoInfo(details.result.profile);
+      setAlgoInfo(details.result);
       setLoading(false);
     } catch (exception) {
       setLoading(false);
       console.log(exception);
     }
   };
+
   useEffect(() => {
     const fetchData = async () => {
       await algoMatches();
@@ -23,6 +26,10 @@ const Matches = () => {
 
     fetchData();
   }, []);
+
+  const handleToggleMatches = () => {
+    setShowAllMatches(!showAllMatches);
+  };
 
   return (
     <>
@@ -32,14 +39,20 @@ const Matches = () => {
         </div>
       ) : (
         <div className="mx-4 my-4">
-          <h3 className="text-xl font-semibold">Your matches</h3>
-          <div className="mt-5 ml-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-4 gap-y-4">
-            {algoInfo &&
-              algoInfo.map((match, index) => (
-                // console.log(match)
+          <h3 className="font-semibold text-2xl">Your matches</h3>
+          <div className="ml-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-4">
+            {algoInfo
+              .slice(0, showAllMatches ? algoInfo.length : 3)
+              .map((match, index) => (
                 <RecommendItem key={index} recommend={match} />
               ))}
           </div>
+          <button
+            className="text-red-500 px-4 py-2 text-xl rounded mt-4 mx-[45%] w-[15%] inline-block focus:outline-none shadow-md transition duration-300 ease-in-out transform hover:scale-105"
+            onClick={handleToggleMatches}
+          >
+            {showAllMatches ? "View Less" : "View More"}
+          </button>
         </div>
       )}
     </>
