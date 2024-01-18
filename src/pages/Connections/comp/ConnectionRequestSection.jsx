@@ -1,8 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { RiArrowDownSFill } from "react-icons/ri";
 import { useState } from "react";
-import { useContext } from "react";
 import ConnectionRequestCard from "./ConnectionRequestCard";
 
 export default function ConnectionRequestSection() {
@@ -10,8 +7,6 @@ export default function ConnectionRequestSection() {
 
   const [invitations, setInvitations] = useState([0, 1, 2]);
   const [pending, setPending] = useState([0, 1, 2]);
-
-  // const connectionRequests = useSelector((state) => state.connection.connectionRequests);
   const connectionRequests = [1, 2, 3, 4];
 
   return (
@@ -19,7 +14,6 @@ export default function ConnectionRequestSection() {
       <div className="flex flex-col mb-3 w-[80%] mx-auto h-full bg-screen rounded-xl overflow-hidden">
         {connectionRequests ? (
           <>
-            {/* invitations */}
             {invitations && (
               <>
                 <div
@@ -29,9 +23,7 @@ export default function ConnectionRequestSection() {
                   <h2 className="text-lg font-bold text-[rgba(0, 0, 0, 0.6)] xl:text-xl ">
                     Invitations
                   </h2>
-                  {/* <span><RiArrowDownSFill size={25} /></span> */}
                 </div>
-                {/* { connectionRequests.length === 0 && <div>No Connection Requests :</div>} */}
                 <div
                   className={`transition-all duration-500 overflow-hidden  ${
                     showRequests ? "h-full" : "h-0"
@@ -49,7 +41,6 @@ export default function ConnectionRequestSection() {
                 </div>
               </>
             )}
-            {/* pending request */}
             {pending && (
               <>
                 <div
@@ -59,9 +50,7 @@ export default function ConnectionRequestSection() {
                   <h2 className="text-lg font-bold text-[rgba(0, 0, 0, 0.6)] xl:text-xl ">
                     Sent Requests
                   </h2>
-                  {/* <span><RiArrowDownSFill size={25} /></span> */}
                 </div>
-                {/* { connectionRequests.length === 0 && <div>No Connection Requests :</div>} */}
                 <div
                   className={`transition-all duration-500 overflow-hidden  ${
                     showRequests ? "h-full" : "h-0"

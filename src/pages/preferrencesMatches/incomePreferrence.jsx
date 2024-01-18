@@ -7,11 +7,12 @@ import noData from "../../../public/3009287.jpg";
 const IncomePreferrence = () => {
   const [incomeInfo, setIncomeInfo] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const [user, setUser] = useState();
   const incomeDetails = async () => {
     try {
       const detail = await preferrenceSvc.getByIncome();
       setIncomeInfo(detail.result);
+      setUser(detail.user);
       setLoading(false);
     } catch (exception) {
       setLoading(false);
@@ -37,7 +38,7 @@ const IncomePreferrence = () => {
         <div className="mt-5 ml-3 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-x-4 gap-y-4">
           {incomeInfo && incomeInfo.length > 0 ? (
             incomeInfo.map((match, index) => (
-              <RecommendItem key={index} recommend={match} />
+              <RecommendItem key={index} recommend={match} user={user[index]} />
             ))
           ) : (
             <div className="flex flex-col items-center justify-center mt-5">

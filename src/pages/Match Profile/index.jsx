@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import profileSvc from "../../services/profile.service";
 import { useParams } from "react-router-dom";
-import NavBar from "../../components/Navbar";
-import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
 
 const MatchProfile = () => {
   const params = useParams();
@@ -41,7 +39,7 @@ const MatchProfile = () => {
                   />
                 </div>
               </div>
-              <div className="w-[150px] ml-[78vw] mt-3">
+              {/* <div className="w-[150px] ml-[78vw] mt-3">
                 <button className="w-full flex bg-[var(--secondary)] hover:bg-[var(--secondary-light)] rounded-xl px-4 py-2 border-none outline-none">
                   <span>
                     <IoChatbubbleEllipsesOutline color="white" size={20} />
@@ -50,7 +48,7 @@ const MatchProfile = () => {
                     Chat
                   </h3>
                 </button>
-              </div>
+              </div> */}
               <div className="w-[80%] mx-auto flex flex-col mt-2 capitalize">
                 <div className="w-[80%] mx-auto flex flex-col mt-2">
                   <div className="border p-4 rounded-md shadow-md mb-4">
