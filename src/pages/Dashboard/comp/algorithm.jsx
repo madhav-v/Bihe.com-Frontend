@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import preferrenceSvc from "../../../services/preferreces.service";
 import RecommendItem from "./recommenditem";
-// import "./Matches.css"; // Import your CSS file
 
 const Matches = () => {
   const [algoInfo, setAlgoInfo] = useState([]);
+  const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
   const [showAllMatches, setShowAllMatches] = useState(false);
 
@@ -12,6 +12,7 @@ const Matches = () => {
     try {
       const details = await preferrenceSvc.getMatchesByAlgorithm();
       setAlgoInfo(details.result);
+      setUser(details.user);
       setLoading(false);
     } catch (exception) {
       setLoading(false);
@@ -30,7 +31,7 @@ const Matches = () => {
   const handleToggleMatches = () => {
     setShowAllMatches(!showAllMatches);
   };
-
+  console.log("user", user);
   return (
     <>
       {loading ? (
@@ -44,7 +45,11 @@ const Matches = () => {
             {algoInfo
               .slice(0, showAllMatches ? algoInfo.length : 3)
               .map((match, index) => (
-                <RecommendItem key={index} recommend={match} />
+                <RecommendItem
+                  key={index}
+                  recommend={match}
+                  user={user[index]}
+                />
               ))}
           </div>
           <button

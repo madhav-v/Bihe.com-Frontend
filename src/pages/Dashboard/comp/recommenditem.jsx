@@ -5,6 +5,7 @@ import chatSvc from "../../../services/chat.service";
 import { toast } from "react-toastify";
 
 function RecommendItem(props) {
+  console.log("props", props.user);
   const [request, setRequest] = useState(() => {
     const storedState = localStorage.getItem("chatRequestState");
     return storedState ? JSON.parse(storedState) : undefined;
@@ -23,6 +24,7 @@ function RecommendItem(props) {
     }
     return age;
   };
+
   const navigate = useNavigate();
   const sendChatRequest = async () => {
     try {
@@ -35,8 +37,6 @@ function RecommendItem(props) {
         toast.warn("Request Already Sent!!");
       }
       setRequest(response);
-
-      // Save the state to localStorage
       localStorage.setItem("chatRequestState", JSON.stringify(response));
     } catch (exception) {
       console.error("Error sending chat request:", exception);
@@ -44,7 +44,6 @@ function RecommendItem(props) {
     }
   };
   useEffect(() => {
-    // Cleanup localStorage when the component is unmounted
     return () => localStorage.removeItem("chatRequestState");
   }, []);
 
