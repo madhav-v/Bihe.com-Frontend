@@ -4,8 +4,6 @@ import profileAvatar from "../../../../public/sr1.jpg";
 import chatSvc from "../../../services/chat.service";
 
 const NotificationCard = ({ sender, sId, onAccept, onReject }) => {
-  console.log("sender",sender);
-  console.log("SID",sId);
   const handleAccept = async () => {
     try {
       if (!sender || !sender._id || !sId) {
@@ -13,7 +11,7 @@ const NotificationCard = ({ sender, sId, onAccept, onReject }) => {
         return;
       }
       const userID = sender._id;
-      console.log("userID",userID);
+      console.log("userID", userID);
       onAccept(sId, userID);
     } catch (exception) {
       console.log(exception);
