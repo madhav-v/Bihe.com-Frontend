@@ -5,6 +5,7 @@ function ConversationBox({ props }) {
   const loggedInUser = useSelector((state) => state.User.loggedInUser);
   const { users } = props;
   const otherUser = users.find((user) => user._id !== loggedInUser?._id);
+
   return (
     <>
       {loggedInUser && (

@@ -5,7 +5,7 @@ import chatSvc from "../../../services/chat.service";
 import { toast } from "react-toastify";
 
 function RecommendItem(props) {
-  console.log("props", props.user);
+  // console.log("props", props.user);
   const [request, setRequest] = useState(() => {
     const storedState = localStorage.getItem("chatRequestState");
     return storedState ? JSON.parse(storedState) : undefined;

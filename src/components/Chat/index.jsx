@@ -4,11 +4,47 @@ import ConversationBox from "./comp/ConversationBox";
 import img from "../../../public/sr1.jpg";
 import { useNavigate } from "react-router-dom";
 import chatSvc from "../../services/chat.service";
+import io from "socket.io-client";
 
-const Chat = (props) => {
+const Chat = () => {
   const navigate = useNavigate();
   const [conversations, setConversations] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [socket, setSocket] = useState(null);
+
+  useEffect(() => {
+    const socketInstance = io("http://localhost:3005");
+
+    socketInstance.on("connect", () => {
+      console.log("Connected to Socket.IO server!");
+    });
+
+    socketInstance.on("disconnect", () => {
+      console.log("Disconnected from Socket.IO server!");
+    });
+
+    socketInstance.on("error", (error) => {
+      console.error("Socket.IO error:", error);
+    });
+
+    setSocket(socketInstance);
+
+    return () => {
+      socketInstance.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!socket) return;
+
+    socket.on("newMessage", (message) => {
+      console.log("New message received:", message);
+    });
+
+    return () => {
+      socket.disconnect();
+    };
+  }, [socket]);
 
   const chats = async () => {
     try {
@@ -29,6 +65,12 @@ const Chat = (props) => {
 
   const handleConversationClick = (id) => {
     navigate(`/user/chat/conversation/${id}`);
+    const message = {
+      text: "Hello, new conversation!",
+      conversationId: id,
+    };
+
+    socket.emit("sendMessage", message);
   };
 
   return (
@@ -44,15 +86,6 @@ const Chat = (props) => {
           </div>
 
           <div className="chat-sidebar w-full px-2">
-            {/* {isLoading && <p>Loading...</p>}
-            {!isLoading && conversations.length === 0 && (
-              <p className="ml-5">
-                No conversations to show....
-                <br /> Please connect with your matches.
-              </p>
-            )} */}
-
-            {/* {!isLoading && */}
             {conversations.map((conversation, index) => (
               <div
                 key={index}

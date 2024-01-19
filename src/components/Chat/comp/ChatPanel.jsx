@@ -58,6 +58,7 @@ function ChatPanel() {
       if (response.status) {
         fetchMessages();
         setNewMessageContent("");
+        socket.emit("newMessage", { chatId, message: response.result });
       }
     } catch (exception) {
       console.log(exception);
@@ -67,7 +68,7 @@ function ChatPanel() {
     chats();
     fetchMessages();
     messageSender();
-  }, [id, conversations, sender]);
+  }, [id]);
   const handleKeyPress = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();

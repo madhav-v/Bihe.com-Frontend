@@ -69,6 +69,7 @@ class AuthService {
           "Content-Type": "application/json",
         },
       });
+      console.log("user info", userInfo);
       return userInfo;
     } catch (error) {
       throw error;

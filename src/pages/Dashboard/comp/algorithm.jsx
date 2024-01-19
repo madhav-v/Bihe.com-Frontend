@@ -31,7 +31,7 @@ const Matches = () => {
   const handleToggleMatches = () => {
     setShowAllMatches(!showAllMatches);
   };
-  console.log("user", user);
+  // console.log("user", user);
   return (
     <>
       {loading ? (

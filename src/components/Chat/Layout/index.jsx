@@ -16,8 +16,6 @@ function ChatLayout() {
         <div className=" ">
           <Chat />
           <Outlet />
-          {/* <ChatPanel/> */}
-          {/* <ConversationBox/> */}
         </div>
       </div>
     </div>
