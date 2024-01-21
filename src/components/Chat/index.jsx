@@ -61,7 +61,7 @@ const Chat = () => {
 
   useEffect(() => {
     chats();
-  }, []);
+  }, [conversations]);
 
   const handleConversationClick = (id) => {
     navigate(`/user/chat/conversation/${id}`);
