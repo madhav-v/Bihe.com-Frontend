@@ -7,12 +7,14 @@ const Matches = () => {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
   const [showAllMatches, setShowAllMatches] = useState(false);
+  const [score, setScore] = useState();
 
   const algoMatches = async () => {
     try {
       const details = await preferrenceSvc.getMatchesByAlgorithm();
       setAlgoInfo(details.result);
       setUser(details.user);
+      setScore(details.score);
       setLoading(false);
     } catch (exception) {
       setLoading(false);
@@ -31,7 +33,7 @@ const Matches = () => {
   const handleToggleMatches = () => {
     setShowAllMatches(!showAllMatches);
   };
-  // console.log("user", user);
+  console.log("user", score);
   return (
     <>
       {loading ? (
@@ -49,6 +51,7 @@ const Matches = () => {
                   key={index}
                   recommend={match}
                   user={user[index]}
+                  score={score[index]}
                 />
               ))}
           </div>

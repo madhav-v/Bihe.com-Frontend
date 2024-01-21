@@ -5,7 +5,6 @@ import chatSvc from "../../../services/chat.service";
 import { toast } from "react-toastify";
 
 function RecommendItem(props) {
-  // console.log("props", props.user);
   const [request, setRequest] = useState(() => {
     const storedState = localStorage.getItem("chatRequestState");
     return storedState ? JSON.parse(storedState) : undefined;
@@ -80,6 +79,14 @@ function RecommendItem(props) {
             {props.recommend.occupation}
           </span>
         </div>
+        {props.score && (
+          <>
+            {" "}
+            <div className="w-full flex justify-between px-2">
+              <span className="text-md font-[500]">Score: {props.score}</span>
+            </div>
+          </>
+        )}
 
         <div className="w-full flex justify-between mt-2 mb-2">
           <button
