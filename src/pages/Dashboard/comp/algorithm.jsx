@@ -33,7 +33,6 @@ const Matches = () => {
   const handleToggleMatches = () => {
     setShowAllMatches(!showAllMatches);
   };
-  console.log("user", score);
   return (
     <>
       {loading ? (
