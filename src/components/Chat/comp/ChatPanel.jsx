@@ -8,6 +8,7 @@ import Message from "./Message";
 import chatSvc from "../../../services/chat.service";
 import profileSvc from "../../../services/profile.service";
 import authSvc from "../../../services/auth.service";
+import { MdReportGmailerrorred } from "react-icons/md";
 
 function ChatPanel() {
   const chatBoxRef = useRef(null);
@@ -15,13 +16,19 @@ function ChatPanel() {
   const params = useParams();
   let id = params.id;
   const [newMessageContent, setNewMessageContent] = useState([]);
+  const [showReportOptions, setShowReportOptions] = useState(false);
+  const [userID, setUserID] = useState();
   const [conversationMessages, setConversationMessages] = useState();
   const [conversations, setConversations] = useState([]);
   const [sender, setSender] = useState();
+  const handleReportButtonClick = () => {
+    setShowReportOptions(!showReportOptions);
+  };
   const chats = async () => {
     try {
       const response = await authSvc.getUserProfileById(id);
       if (response.status) {
+        setUserID(response.result._id);
         setConversations(response.result);
       }
     } catch (exception) {
@@ -38,7 +45,6 @@ function ChatPanel() {
       console.log(exception);
     }
   };
-
   const fetchMessages = async () => {
     const chatId = params.id;
     try {
@@ -108,6 +114,16 @@ function ChatPanel() {
                   </div>
                 </Link>
               </div>
+            </div>
+            <div className="mr-3">
+              <button onClick={handleReportButtonClick}>
+                <MdReportGmailerrorred size={25} color="red" />
+              </button>
+              {showReportOptions && (
+                <div className="absolute top-0 right-0 mt-10 mr-5 bg-white p-2 border shadow-md">
+                  <button className="p-1">Report</button>
+                </div>
+              )}
             </div>
           </div>
           <div className="w-full h-[72vh]">
