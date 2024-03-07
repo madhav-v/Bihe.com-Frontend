@@ -70,11 +70,11 @@ const NavBar = () => {
               </NavLink>
             </li>
 
-            <li className="navbar-item mt-2 hover:bg-screen py-2 px-3 rounded-xl hover:bg-[#e86f6f]">
+            {/* <li className="navbar-item mt-2 hover:bg-screen py-2 px-3 rounded-xl hover:bg-[#e86f6f]">
               <NavLink className="navbar-link cool-link" to="/user/notification">
                 <MdNotificationsNone size={30} color="white" />
               </NavLink>
-            </li>
+            </li> */}
             <li className="navbar-item mt-2 hover:bg-screen py-2 px-3 rounded-xl relative hover:bg-[#e86f6f]">
               <div className="relative">
                 <button

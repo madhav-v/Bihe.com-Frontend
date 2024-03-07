@@ -9,6 +9,8 @@ import chatSvc from "../../../services/chat.service";
 import profileSvc from "../../../services/profile.service";
 import authSvc from "../../../services/auth.service";
 import { MdReportGmailerrorred } from "react-icons/md";
+import reportSvc from "../../../services/report.service";
+import { toast } from "react-toastify";
 
 function ChatPanel() {
   const chatBoxRef = useRef(null);
@@ -18,11 +20,20 @@ function ChatPanel() {
   const [newMessageContent, setNewMessageContent] = useState([]);
   const [showReportOptions, setShowReportOptions] = useState(false);
   const [userID, setUserID] = useState();
+  const [reason, setReason] = useState("");
+  const [showReasons, setShowReasons] = useState(false);
   const [conversationMessages, setConversationMessages] = useState();
   const [conversations, setConversations] = useState([]);
   const [sender, setSender] = useState();
   const handleReportButtonClick = () => {
     setShowReportOptions(!showReportOptions);
+    setShowReasons(false);
+  };
+  const handleReportReasonsClick = () => {
+    setShowReasons(!showReasons);
+  };
+  const handleReasonChange = (e) => {
+    setReason(e.target.value);
   };
   const chats = async () => {
     try {
@@ -65,6 +76,25 @@ function ChatPanel() {
         fetchMessages();
         setNewMessageContent("");
         socket.emit("newMessage", { chatId, message: response.result });
+      }
+    } catch (exception) {
+      console.log(exception);
+    }
+  };
+
+  const handleReport = async () => {
+    try {
+      let receiver = conversations._id;
+      const data = {
+        receiver,
+        reason,
+      };
+      const response = await reportSvc.sendReport(data);
+      setShowReportOptions(false);
+      toast.success("User Reported Successfully");
+      setReason("");
+      if (response) {
+        console.log("sucees");
       }
     } catch (exception) {
       console.log(exception);
@@ -121,7 +151,27 @@ function ChatPanel() {
               </button>
               {showReportOptions && (
                 <div className="absolute top-0 right-0 mt-10 mr-5 bg-white p-2 border shadow-md">
-                  <button className="p-1">Report</button>
+                  <button className="p-1" onClick={handleReportReasonsClick}>
+                    Report
+                  </button>
+                  {showReasons && (
+                    <div className="mt-2">
+                      <textarea
+                        className="border"
+                        rows="4"
+                        cols="50"
+                        value={reason}
+                        onChange={handleReasonChange}
+                        placeholder="Please provide reasons for reporting..."
+                      ></textarea>
+                      <button
+                        className="flex bg-red-500 rounded-sm cursor-pointer mr-4 hover:bg-red-700 p-1"
+                        onClick={handleReport}
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
