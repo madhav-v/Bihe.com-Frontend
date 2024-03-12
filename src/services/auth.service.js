@@ -54,6 +54,7 @@ class AuthService {
       });
       return userInfo;
     } catch (error) {
+      console.log(error);
       throw error;
     }
   };

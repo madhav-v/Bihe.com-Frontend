@@ -5,10 +5,6 @@ import chatSvc from "../../../services/chat.service";
 import { toast } from "react-toastify";
 
 function RecommendItem(props) {
-  const [request, setRequest] = useState(() => {
-    const storedState = localStorage.getItem("chatRequestState");
-    return storedState ? JSON.parse(storedState) : undefined;
-  });
   const calculateAge = (dob) => {
     const today = new Date();
     const birthDate = new Date(dob);
@@ -35,16 +31,13 @@ function RecommendItem(props) {
       } else {
         toast.warn("Request Already Sent!!");
       }
-      setRequest(response);
-      localStorage.setItem("chatRequestState", JSON.stringify(response));
+      // setRequest(response);
+      // localStorage.setItem("chatRequestState", JSON.stringify(response));
     } catch (exception) {
       console.error("Error sending chat request:", exception);
-      setRequest("error");
+      // setRequest("error");
     }
   };
-  useEffect(() => {
-    return () => localStorage.removeItem("chatRequestState");
-  }, []);
 
   return (
     <div className="mt-5 capitalize rounded-lg bg-white overflow-hidden shadow-sm">
@@ -98,9 +91,9 @@ function RecommendItem(props) {
           <button
             className="px-2 py-2 w-full rounded-xl text-md border-[2px] border-[rgba(0, 0, 0, 0.4)]"
             onClick={sendChatRequest}
-            disabled={request && request.status === false}
+            // disabled={request && request.status === false}
           >
-            {request && request.status === false ? "Request Sent" : "Connect"}
+            Connect
           </button>
         </div>
       </div>

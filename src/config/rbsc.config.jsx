@@ -7,7 +7,7 @@ import Loading from "../pages/error/loading";
 const CheckPermission = ({ Component, accessBy }) => {
   let [userInfo, setUserInfo] = useState();
   let [loading, setLoading] = useState(true);
-  let [error, setError] = useState();
+  let [error, setError] = useState(false);
 
   const getLoggedInUser = async () => {
     try {
@@ -25,11 +25,16 @@ const CheckPermission = ({ Component, accessBy }) => {
     getLoggedInUser();
   }, []);
 
+
   if (error) {
     return <Navigate to={"/"} />;
   } else {
     if (loading) {
-      return <><Loading /></>;
+      return (
+        <>
+          <Loading />
+        </>
+      );
     } else if (!loading && userInfo && userInfo.role === accessBy) {
       return Component;
     } else {
