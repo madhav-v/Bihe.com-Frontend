@@ -105,6 +105,13 @@ function ChatPanel() {
     fetchMessages();
     messageSender();
   }, [id]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetchMessages();
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [id]);
   const handleKeyPress = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
