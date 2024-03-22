@@ -35,15 +35,20 @@ import OccupationPreferrence from "./pages/preferrencesMatches/occupationPreferr
 import IncomePreferrence from "./pages/preferrencesMatches/incomePreferrence.jsx";
 import MatchProfile from "./pages/Match Profile/index.jsx";
 import InnerLayout from "./pages/HomePage/Layout/innerLayout.jsx";
+import SuperAdminSidebar from "./pages/admin/components/sidebar.jsx";
+import FeedBack from "./pages/admin/components/feedback.jsx";
+import Users from "./pages/admin/components/users.jsx";
+import Report from "./pages/admin/components/report.jsx";
 // import ChatPanel from "./pages/chat/index.jsx";
 
 function App() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getLoggedInUser());
     dispatch(setLoggedInUser());
     dispatch(getLoggedInUserWithProfile());
-  }, []);
+  }, [dispatch]);
   return (
     <>
       <ToastContainer />
@@ -55,6 +60,21 @@ function App() {
           <Route path="/forgetPassword" element={<ResetPassword />} />
           <Route path="/setPassword/:token" element={<SetPassword />} />
           <Route path="/terms" element={<TermsAndConditions />} />
+
+          <Route
+            path="/admin"
+            element={
+              <CheckPermission
+                accessBy={"admin"}
+                Component={<SuperAdminSidebar />}
+              />
+            }
+          >
+            {/* <Route index element={<SuperAdminSidebar />} /> */}
+            <Route path="feedback" element={<FeedBack />} />
+            <Route path="user" element={<Users />} />
+            <Route path="report" element={<Report />} />
+          </Route>
           <Route
             path="/user"
             element={
@@ -81,7 +101,9 @@ function App() {
             <Route path="profile/info" element={<Form />} />
             <Route path="profile" element={<ViewProfile />} />
             <Route path="editProfile" element={<EditProfile />} />
+            {/* <Route path="admin" element={<SuperAdminSidebar />} /> */}
           </Route>
+
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </ChatProvider>

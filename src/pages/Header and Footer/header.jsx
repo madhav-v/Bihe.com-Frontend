@@ -52,7 +52,7 @@ const Header = () => {
               </button>
             </Link>
           ) : (
-            <Link to="/user">
+            <Link to={loggedInUser.role}>
               <button className="nav-btn text-sm md:text-base text-white">
                 {loggedInUser.name.split(" ")[0]}{" "}
               </button>

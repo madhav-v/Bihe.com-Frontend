@@ -24,8 +24,18 @@ const CheckPermission = ({ Component, accessBy }) => {
   useEffect(() => {
     getLoggedInUser();
   }, []);
-
-
+  useEffect(() => {
+    if (!loading && userInfo) {
+      console.log("User Info:", userInfo);
+      console.log("Access By:", accessBy);
+      if (userInfo.role === accessBy) {
+        console.log("Access Granted");
+      } else {
+        console.log("Access Denied");
+        // toast.warning("You can't access this page");
+      }
+    }
+  }, [loading, userInfo, accessBy]);
   if (error) {
     return <Navigate to={"/"} />;
   } else {

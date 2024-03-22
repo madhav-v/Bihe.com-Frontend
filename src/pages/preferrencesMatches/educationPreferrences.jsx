@@ -3,11 +3,12 @@ import preferrenceSvc from "../../services/preferreces.service";
 import RecommendItem from "../Dashboard/comp/recommenditem";
 import NavBar from "../../components/Navbar";
 import noData from "../../../public/3009287.jpg";
+import { Link } from "react-router-dom";
 
 const EducationPreferrence = () => {
   const [educationInfo, setEducationInfo] = useState([]);
   const [user, setUser] = useState();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const educationDetails = async () => {
     try {
@@ -44,6 +45,7 @@ const EducationPreferrence = () => {
           ) : (
             <div className="flex flex-col items-center justify-center mt-5">
               <img src={noData} alt="No Matches Found" />
+              <Link to="/user/admin">Admin</Link>{" "}
               <p className="mt-3">No matches found</p>
             </div>
           )}
