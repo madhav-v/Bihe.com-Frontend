@@ -58,6 +58,8 @@ const LoginPage = () => {
     if (userInfo) {
       if (!userInfo.profile) {
         navigate("/user/profile/info");
+      } else if (userInfo.role === "admin") {
+        navigate("/admin");
       } else {
         navigate("/user");
       }
