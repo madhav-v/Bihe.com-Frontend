@@ -1,26 +1,15 @@
 import React, { useState } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
 import {
-  MdCategory,
   MdOutlineDashboard,
-  MdProductionQuantityLimits,
 } from "react-icons/md";
-import { RiSettings4Line } from "react-icons/ri";
 import { AiOutlineUser } from "react-icons/ai";
-import { FaQuestion } from "react-icons/fa";
-import { GiNothingToSay } from "react-icons/gi";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { BiUserVoice } from "react-icons/bi";
-import { BsFillBagDashFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-// import { logedOut } from "../../pages/signin/auth.Slice";
-// import { successToast } from "../../services/toast.service";
 import { GoReport } from "react-icons/go";
 import { MdReportProblem } from "react-icons/md";
 
 const SuperAdminSidebar = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const menus = [
     {
       name: "Home",
@@ -37,11 +26,6 @@ const SuperAdminSidebar = () => {
   ];
   const [open, setOpen] = useState(true);
 
-  //   const handleLogout = () => {
-  //     dispatch(logedOut());
-  //     navigate("/signin");
-  //     successToast("User logout successfully");
-  //   };
   return (
     <section className="flex gap-6 ">
       <div
